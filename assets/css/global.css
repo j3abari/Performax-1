@@ -1,0 +1,47 @@
+/* Performax 1 - Global Design Tokens */
+:root {
+    /* Core Brand Colors */
+    --bg-primary: #0A0A0A;
+    --bg-surface: #171717;
+    --bg-surface-hover: #262626;
+    
+    --color-primary: #E61919;
+    --color-primary-hover: #FF3333;
+    --color-secondary: #1A66FF;
+    --color-accent: #00E5FF;
+    
+    --text-primary: #FFFFFF;
+    --text-secondary: #A3A3A3;
+    --text-muted: #737373;
+    
+    /* Legacy Template Mappings (to ensure everything updates to red/black) */
+    --black: var(--bg-primary);
+    --black-light: var(--bg-surface);
+    --black-medium: var(--bg-surface);
+    --black-soft: var(--bg-surface-hover);
+    
+    --green-primary: var(--color-primary);
+    --green-bright: var(--color-primary-hover);
+    --green-dark: #b30000;
+    --green-glow: rgba(230, 25, 25, 0.15);
+    --green-subtle: rgba(230, 25, 25, 0.08);
+    
+    --primary-glow: var(--green-glow);
+    --primary-subtle: var(--green-subtle);
+    
+    --white: var(--text-primary);
+    --gray-100: #f5f5f5;
+    --gray-200: #e5e5e5;
+    --gray-300: #d4d4d4;
+    --gray-400: var(--text-secondary);
+    --gray-500: var(--text-muted);
+    --gray-600: #525252;
+    --gray-700: #404040;
+    --gray-800: #262626;
+    
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
