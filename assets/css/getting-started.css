@@ -14,7 +14,7 @@ body, html {
     font-family: 'Inter', sans-serif;
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     margin: 0;
     padding: 0;
 }
@@ -53,7 +53,7 @@ body, html {
 .funnel-container {
     flex-grow: 1;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: center;
     padding: 2rem 1.5rem;
     max-width: 800px;
@@ -231,7 +231,7 @@ input:focus, textarea:focus {
 
 .row-radio {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
 }
 
 .radio-group {
@@ -385,7 +385,7 @@ input[type="radio"] {
     }
     
     .funnel-actions {
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
     
     .btn-prev, .btn-next {
