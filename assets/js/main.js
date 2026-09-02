@@ -1,0 +1,143 @@
+// Initialize on DOM load
+document.addEventListener('DOMContentLoaded', () => {
+    initScrollReveal();
+    initNavbar();
+    initCounters();
+    initCursorGlow();
+    initScrollProgress();
+});
+
+// Scroll Reveal Animation
+function initScrollReveal() {
+    const reveals = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    reveals.forEach(el => observer.observe(el));
+}
+
+// Navbar Scroll Effect
+function initNavbar() {
+    const navbar = document.getElementById('navbar');
+    if (!navbar) return;
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+
+        lastScroll = currentScroll;
+    }, { passive: true });
+}
+
+// Animated Counters
+function initCounters() {
+    const counters = document.querySelectorAll('.counter');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => observer.observe(counter));
+}
+
+function animateCounter(element) {
+    const target = parseFloat(element.dataset.target);
+    const duration = 2000;
+    const startTime = performance.now();
+    const isDecimal = target % 1 !== 0;
+
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        // Easing function for smooth animation
+        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+        const current = target * easeOutQuart;
+
+        if (isDecimal) {
+            element.textContent = current.toFixed(1);
+        } else {
+            element.textContent = Math.floor(current);
+        }
+
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        } else {
+            element.textContent = isDecimal ? target.toFixed(1) : target;
+        }
+    }
+
+    requestAnimationFrame(update);
+}
+
+// Cursor Glow Effect
+function initCursorGlow() {
+    const glow = document.getElementById('cursorGlow');
+    if (!glow) return;
+
+    let mouseX = 0, mouseY = 0;
+    let glowX = 0, glowY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    }, { passive: true });
+
+    function animateGlow() {
+        glowX += (mouseX - glowX) * 0.1;
+        glowY += (mouseY - glowY) * 0.1;
+
+        glow.style.left = glowX + 'px';
+        glow.style.top = glowY + 'px';
+
+        requestAnimationFrame(animateGlow);
+    }
+
+    animateGlow();
+}
+
+// Scroll Progress Indicator
+function initScrollProgress() {
+    const progress = document.getElementById('scrollProgress');
+    if (!progress) return;
+
+    window.addEventListener('scroll', () => {
+        const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = (window.pageYOffset / windowHeight);
+        progress.style.transform = `scaleX(${scrolled})`;
+    }, { passive: true });
+}
+
+// Smooth Scroll for Navigation Links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
