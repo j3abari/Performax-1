@@ -126,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Form Submission
     // Form Submission (Connected to Webhook)
+    // Form Submission (Connected directly to Google Sheets via Apps Script)
     const discoveryForm = document.getElementById('discovery-form');
     if (discoveryForm) {
         discoveryForm.addEventListener('submit', async function(e) {
@@ -139,29 +140,82 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.disabled = true;
             submitBtn.style.opacity = '0.7';
 
-            // 2. Gather all form data
-            const formData = new FormData(this);
-            
-            // Add the qualification answers from Step 1
+            // 2. Gather text data
             const salesRange = document.getElementById('sales-range').options[document.getElementById('sales-range').selectedIndex].text;
             const adSpend = document.getElementById('ad-spend-range').options[document.getElementById('ad-spend-range').selectedIndex].text;
             
-            formData.append('Sales_Generated', salesRange);
-            formData.append('Ad_Spend', adSpend);
+            const formData = new FormData(this);
+            const payload = {
+                salesRange: salesRange,
+                adSpend: adSpend,
+                videoWatched: formData.get('video_watched'),
+                name: formData.get('name'),
+                phone: formData.get('phone'),
+                email: formData.get('email'),
+                role: formData.get('role'),
+                instagram: formData.get('instagram'),
+                goals: formData.get('goals'),
+                extra: formData.get('extra'),
+                meetingTime: this.querySelector('.date-btn.selected') ? this.querySelector('.date-btn.selected').textContent : 'Not Selected',
+                fileData: null,
+                fileName: null,
+                fileType: null
+            };
 
             // ==========================================
-            // ⚠️ ضع رابط الـ WEBHOOK الخاص بك هنا
+            // ⚠️ ضع رابط الـ Google Apps Script الخاص بك هنا
             // ==========================================
-            const WEBHOOK_URL = 'https://hook.us1.make.com/YOUR_WEBHOOK_ID_HERE'; 
+            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec';
 
-            try {
-                // 3. Send data to the Webhook
-                const response = await fetch(WEBHOOK_URL, {
-                    method: 'POST',
-                    body: formData // Sends text and the image file automatically
-                });
+            // 3. Handle File Upload (Convert to Base64 for Google Apps Script)
+            const fileInput = this.querySelector('input[type="file"]');
+            
+            const sendDataToGoogle = async (finalPayload) => {
+                try {
+                    // Using text/plain avoids CORS preflight issues with Google Scripts
+                    const response = await fetch(GOOGLE_SCRIPT_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'text/plain;charset=utf-8',
+                        },
+                        body: JSON.stringify(finalPayload)
+                    });
 
-                if (response.ok || response.type === 'opaque') {
+                    // 4. Show Success Message
+                    discoveryForm.innerHTML = 
+                        <div style="text-align: center; padding: 3rem 1rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#E61919" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                            <h2 style="color: var(--white); margin-bottom: 1rem;">Application Submitted Successfully!</h2>
+                            <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6;">Our team will review your application and sales data. We will reach out within 24-48 hours via email or WhatsApp to schedule your Discovery Call.</p>
+                        </div>
+                    ;
+                    document.querySelector('.next-steps-box').style.display = 'none';
+                    
+                } catch (error) {
+                    console.error('Error submitting form:', error);
+                    alert("Something went wrong. Please try again or contact us directly at performax.one1@gmail.com");
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                }
+            };
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    // Extract the base64 string without the data URL prefix
+                    payload.fileData = event.target.result.split(',')[1];
+                    payload.fileName = file.name;
+                    payload.fileType = file.type;
+                    sendDataToGoogle(payload);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                sendDataToGoogle(payload);
+            }
+        });
+    }
                     // 4. Show Success Message
                     discoveryForm.innerHTML = 
                         <div style="text-align: center; padding: 3rem 1rem;">
