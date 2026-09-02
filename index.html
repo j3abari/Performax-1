@@ -18,62 +18,68 @@
     <link rel="stylesheet" href="assets/css/index.css">
 
     <style>
+        /* --- Global Fixes --- */
+        section#cases {
+            padding-bottom: 6rem !important;
+            /* Fix spacing below FASHION BRAND card */
+        }
 
-            /* --- Global Fixes --- */
-            section#cases {
-                padding-bottom: 6rem !important; /* Fix spacing below FASHION BRAND card */
-            }
-            .cases-grid {
-                padding-bottom: 2rem !important;
-            }
+        .cases-grid {
+            padding-bottom: 2rem !important;
+        }
 
         /* --- Mobile Overrides for Inline Styles --- */
         @media (max-width: 768px) {
+
             /* Navbar CTA */
             .nav-cta {
                 padding: 6px 10px !important;
                 font-size: 12px !important;
             }
-            
+
             /* Process Grid (index.html) */
-            section#process > .container > div {
+            section#process>.container>div {
                 grid-template-columns: 1fr !important;
-                padding-bottom: 3rem !important; /* Fix spacing below last card */
+                padding-bottom: 3rem !important;
+                /* Fix spacing below last card */
             }
-            
-            section#process .container > div > div {
+
+            section#process .container>div>div {
                 text-align: center !important;
                 display: flex !important;
                 flex-direction: column !important;
                 align-items: center !important;
             }
-            
-            section#process .container > div > div > div:first-child {
+
+            section#process .container>div>div>div:first-child {
                 left: 50% !important;
                 transform: translateX(-50%) !important;
                 text-align: center !important;
             }
-            
-            section#process .container > div > div ul {
+
+            section#process .container>div>div ul {
                 display: inline-block !important;
                 text-align: left !important;
             }
 
             /* Footer */
-            footer > .container {
+            footer>.container {
                 align-items: center !important;
             }
-            footer > .container > div:first-child {
+
+            footer>.container>div:first-child {
                 flex-direction: column !important;
                 align-items: center !important;
                 text-align: center !important;
             }
+
             footer .footer-links {
                 flex-direction: column !important;
                 align-items: center !important;
                 gap: 1rem !important;
             }
-            footer > .container > div:last-child {
+
+            footer>.container>div:last-child {
                 flex-direction: column !important;
                 align-items: center !important;
                 text-align: center !important;
@@ -83,10 +89,12 @@
     </style>
 
 
-        <style>
-            body { padding-top: 75px; }
-        </style>
-    </head>
+    <style>
+        body {
+            padding-top: 75px;
+        }
+    </style>
+</head>
 
 <body>
     <!-- Scroll Progress -->
@@ -96,11 +104,14 @@
     <div class="cursor-glow" id="cursorGlow"></div>
 
     <!-- Navigation -->
-    <nav id="navbar" style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(10,10,10,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 0.8rem 0; transition: all 0.3s ease;">
-        <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+    <nav id="navbar"
+        style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(10,10,10,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 0.8rem 0; transition: all 0.3s ease;">
+        <div class="container nav-content"
+            style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
             <a href="index.html" class="logo"><img src="images/logo.png" alt="Performax 1"
                     style="height: 50px; width: auto; object-fit: contain;"></a>
-            <a href="getting-started.html" class="nav-cta" style="color: #ffffff !important; padding: 12px 28px; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px;">
+            <a href="getting-started.html" class="nav-cta"
+                style="color: #ffffff !important; padding: 12px 28px; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px;">
                 Scale Your Brand &rarr;
             </a>
         </div>
@@ -154,7 +165,7 @@
             </div>
 
             <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
-                <a href="https://calendly.com/performax1/30min" 
+                <a href="https://calendly.com/performax1/30min"
                     style="background: var(--color-primary); color: white; padding: 18px 40px; border-radius: 4px; font-weight: 700; font-size: 1.1rem; text-decoration: none; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 10px 20px rgba(230, 25, 25, 0.2);">
                     Book A Consultation
                 </a>
@@ -513,21 +524,42 @@
     <section style="padding: 5rem 20px; background: var(--bg-primary); border-top: 1px solid var(--bg-surface-hover);">
         <div class="container" style="max-width: 800px; margin: 0 auto; text-align: center;">
             <div class="reveal">
-                <div style="display: inline-block; border: 1px solid var(--color-primary); background: rgba(230, 25, 25, 0.05); padding: 8px 24px; border-radius: 50px; color: var(--color-primary); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 1rem;">Human Touch</div>
-                <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem; color: var(--text-primary);">Talk to a Founder, Not a Sales Rep</h2>
-                <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 2.5rem; font-size: 1.1rem; line-height: 1.6;">Omar personally handles all initial conversations. No gatekeepers, no scripts&mdash;just genuine discussion about your business needs.</p>
+                <div
+                    style="display: inline-block; border: 1px solid var(--color-primary); background: rgba(230, 25, 25, 0.05); padding: 8px 24px; border-radius: 50px; color: var(--color-primary); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 1rem;">
+                    Human Touch</div>
+                <h2
+                    style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem; color: var(--text-primary);">
+                    Talk to a Founder, Not a Sales Rep</h2>
+                <p
+                    style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 2.5rem; font-size: 1.1rem; line-height: 1.6;">
+                    Omar personally handles all initial conversations. No gatekeepers, no scripts&mdash;just genuine
+                    discussion about your business needs.</p>
             </div>
-            <div class="reveal reveal-delay-1" style="background: var(--bg-surface); padding: 2.5rem; border-radius: 12px; border: 1px solid var(--bg-surface-hover); max-width: 500px; margin: 0 auto;">
-                <h3 style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem;">Omar Khaled</h3>
-                <p style="color: var(--color-primary); font-weight: 700; letter-spacing: 1px; font-size: 0.85rem; margin-bottom: 1.5rem;">FOUNDER & HEAD OF PERFORMANCE</p>
+            <div class="reveal reveal-delay-1"
+                style="background: var(--bg-surface); padding: 2.5rem; border-radius: 12px; border: 1px solid var(--bg-surface-hover); max-width: 500px; margin: 0 auto;">
+                <h3 style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem;">Omar
+                    Khaled</h3>
+                <p
+                    style="color: var(--color-primary); font-weight: 700; letter-spacing: 1px; font-size: 0.85rem; margin-bottom: 1.5rem;">
+                    FOUNDER & HEAD OF PERFORMANCE</p>
                 <div style="display: flex; flex-direction: column; gap: 0.8rem;">
                     <div style="display: flex; align-items: center; gap: 10px; justify-content: center;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="var(--text-muted)" stroke-width="2" style="flex-shrink: 0; min-width: 18px;"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                        <a href="mailto:performax.one1@gmail.com" style="color: var(--text-secondary); text-decoration: none; font-size: clamp(0.75rem, 4vw, 0.95rem); white-space: nowrap;">performax.one1@gmail.com</a>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24"
+                            stroke="var(--text-muted)" stroke-width="2" style="flex-shrink: 0; min-width: 18px;">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        <a href="mailto:performax.one1@gmail.com"
+                            style="color: var(--text-secondary); text-decoration: none; font-size: clamp(0.75rem, 4vw, 0.95rem); white-space: nowrap;">performax.one1@gmail.com</a>
                     </div>
                     <div style="display: flex; align-items: center; gap: 10px; justify-content: center;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="var(--text-muted)" stroke-width="2" style="flex-shrink: 0; min-width: 18px;"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                        <a href="mailto:omarj3abari@gmail.com" style="color: var(--text-secondary); text-decoration: none; font-size: clamp(0.75rem, 4vw, 0.95rem); white-space: nowrap;">omarj3abari@gmail.com</a>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24"
+                            stroke="var(--text-muted)" stroke-width="2" style="flex-shrink: 0; min-width: 18px;">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        <a href="mailto:omarj3abari@gmail.com"
+                            style="color: var(--text-secondary); text-decoration: none; font-size: clamp(0.75rem, 4vw, 0.95rem); white-space: nowrap;">omarj3abari@gmail.com</a>
                     </div>
                 </div>
             </div>
@@ -541,8 +573,7 @@
                 <h2 class="cta-title">Ready to Stop Guessing and Start Growing?</h2>
                 <p class="cta-subtitle">Stop letting poor tracking, fatigued creatives, and lack of strategy drain your
                     marketing budget. Let Performax 1 build a scalable profit engine for your brand.</p>
-                <a href="getting-started.html" class="cta-button"
-                    style="color: #ffffff !important;" >
+                <a href="getting-started.html" class="cta-button" style="color: #ffffff !important;">
                     Start Scaling Your Brand Today
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd"
@@ -557,36 +588,87 @@
 
     <!-- Footer -->
     <footer style="background: var(--bg-surface); padding: 1.5rem 20px; border-top: 1px solid var(--bg-surface-hover);">
-        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
-            
+        <div
+            style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+
             <!-- Left: Logo & Copyright -->
             <div style="display: flex; align-items: center; gap: 1rem;">
                 <img src="images/logo.png" alt="Performax 1" style="height: 35px; width: auto; object-fit: contain;">
-                <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0; border-left: 1px solid var(--bg-surface-hover); padding-left: 1rem;">&copy; 2026 Performax 1.</p>
+                <p
+                    style="color: var(--text-muted); font-size: 0.85rem; margin: 0; border-left: 1px solid var(--bg-surface-hover); padding-left: 1rem;">
+                    &copy; 2026 Performax 1</p>
             </div>
 
             <!-- Center: Links -->
             <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-                <a href="about.html" style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: 0.3s;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='var(--text-secondary)'">About</a>
-                <a href="services.html" style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: 0.3s;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Services</a>
-                <a href="getting-started.html" style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: 0.3s;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Get Started</a>
-                <a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; transition: 0.3s;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Privacy</a>
+                <a href="about.html"
+                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: 0.3s;"
+                    onmouseover="this.style.color='var(--color-primary)'"
+                    onmouseout="this.style.color='var(--text-secondary)'">About</a>
+                <a href="services.html"
+                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: 0.3s;"
+                    onmouseover="this.style.color='var(--color-primary)'"
+                    onmouseout="this.style.color='var(--text-secondary)'">Services</a>
+                <a href="getting-started.html"
+                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: 0.3s;"
+                    onmouseover="this.style.color='var(--color-primary)'"
+                    onmouseout="this.style.color='var(--text-secondary)'">Get Started</a>
+                <a href="#"
+                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; transition: 0.3s;"
+                    onmouseover="this.style.color='var(--color-primary)'"
+                    onmouseout="this.style.color='var(--text-secondary)'">Privacy</a>
             </div>
 
             <!-- Right: All 6 Social Icons -->
             <div style="display: flex; align-items: center; gap: 1rem;">
                 <!-- Instagram -->
-                <a href="#" style="color: var(--text-muted); transition: 0.3s;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='var(--text-muted)'" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                <a href="#" style="color: var(--text-muted); transition: 0.3s;"
+                    onmouseover="this.style.color='var(--color-primary)'"
+                    onmouseout="this.style.color='var(--text-muted)'" title="Instagram"><svg width="18" height="18"
+                        viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                    </svg></a>
                 <!-- Facebook -->
-                <a href="#" style="color: var(--text-muted); transition: 0.3s;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='var(--text-muted)'" title="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" /></svg></a>
+                <a href="#" style="color: var(--text-muted); transition: 0.3s;"
+                    onmouseover="this.style.color='var(--color-primary)'"
+                    onmouseout="this.style.color='var(--text-muted)'" title="Facebook"><svg width="18" height="18"
+                        viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+                    </svg></a>
                 <!-- YouTube -->
-                <a href="#" style="color: var(--text-muted); transition: 0.3s;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='var(--text-muted)'" title="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" /></svg></a>
+                <a href="#" style="color: var(--text-muted); transition: 0.3s;"
+                    onmouseover="this.style.color='var(--color-primary)'"
+                    onmouseout="this.style.color='var(--text-muted)'" title="YouTube"><svg width="18" height="18"
+                        viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                    </svg></a>
                 <!-- TikTok -->
-                <a href="#" style="color: var(--text-muted); transition: 0.3s;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='var(--text-muted)'" title="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 2.22-1.12 4.39-2.9 5.86-1.6 1.33-3.69 2.01-5.75 1.83-2.11-.18-4.08-1.21-5.46-2.82-1.37-1.6-2.03-3.7-1.89-5.8.14-2.1 1.09-4.08 2.62-5.54 1.5-1.42 3.56-2.22 5.62-2.16.29 0 .59.02.88.06v4.13c-.92-.2-1.89-.13-2.76.24-.87.37-1.61 1.01-2.07 1.82-.46.8-.59 1.76-.36 2.65.23.88.75 1.65 1.48 2.15.73.5 1.63.74 2.52.66.89-.08 1.71-.5 2.33-1.17.61-.66.97-1.54 1-2.45.04-3.15.01-6.29.02-9.44.02-4.22-.03-8.43.05-12.65z"/></svg></a>
+                <a href="#" style="color: var(--text-muted); transition: 0.3s;"
+                    onmouseover="this.style.color='var(--color-primary)'"
+                    onmouseout="this.style.color='var(--text-muted)'" title="TikTok"><svg width="18" height="18"
+                        viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 2.22-1.12 4.39-2.9 5.86-1.6 1.33-3.69 2.01-5.75 1.83-2.11-.18-4.08-1.21-5.46-2.82-1.37-1.6-2.03-3.7-1.89-5.8.14-2.1 1.09-4.08 2.62-5.54 1.5-1.42 3.56-2.22 5.62-2.16.29 0 .59.02.88.06v4.13c-.92-.2-1.89-.13-2.76.24-.87.37-1.61 1.01-2.07 1.82-.46.8-.59 1.76-.36 2.65.23.88.75 1.65 1.48 2.15.73.5 1.63.74 2.52.66.89-.08 1.71-.5 2.33-1.17.61-.66.97-1.54 1-2.45.04-3.15.01-6.29.02-9.44.02-4.22-.03-8.43.05-12.65z" />
+                    </svg></a>
                 <!-- X / Twitter -->
-                <a href="#" style="color: var(--text-muted); transition: 0.3s;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='var(--text-muted)'" title="X / Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg></a>
+                <a href="#" style="color: var(--text-muted); transition: 0.3s;"
+                    onmouseover="this.style.color='var(--color-primary)'"
+                    onmouseout="this.style.color='var(--text-muted)'" title="X / Twitter"><svg width="18" height="18"
+                        viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg></a>
                 <!-- LinkedIn -->
-                <a href="#" style="color: var(--text-muted); transition: 0.3s;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='var(--text-muted)'" title="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                <a href="#" style="color: var(--text-muted); transition: 0.3s;"
+                    onmouseover="this.style.color='var(--color-primary)'"
+                    onmouseout="this.style.color='var(--text-muted)'" title="LinkedIn"><svg width="18" height="18"
+                        viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                    </svg></a>
             </div>
         </div>
     </footer>
