@@ -124,9 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     generateDates();
 
-    // Form Submission
-    // Form Submission (Connected to Webhook)
-    // Form Submission (Connected directly to Google Sheets via Apps Script)
+        // Form Submission (Connected directly to Google Sheets via Apps Script)
     const discoveryForm = document.getElementById('discovery-form');
     if (discoveryForm) {
         discoveryForm.addEventListener('submit', async function(e) {
@@ -141,8 +139,11 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.style.opacity = '0.7';
 
             // 2. Gather text data
-            const salesRange = document.getElementById('sales-range').options[document.getElementById('sales-range').selectedIndex].text;
-            const adSpend = document.getElementById('ad-spend-range').options[document.getElementById('ad-spend-range').selectedIndex].text;
+            const salesRangeSelect = document.getElementById('sales-range');
+            const adSpendSelect = document.getElementById('ad-spend-range');
+            
+            const salesRange = salesRangeSelect.options[salesRangeSelect.selectedIndex].text;
+            const adSpend = adSpendSelect.options[adSpendSelect.selectedIndex].text;
             
             const formData = new FormData(this);
             const payload = {
@@ -162,9 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 fileType: null
             };
 
-            // ==========================================
-            // ⚠️ ضع رابط الـ Google Apps Script الخاص بك هنا
-            // ==========================================
             const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxQ0MRQisDrZ30z0Fj9OIx0CtBoQRH2kiwS_AnsDHApJ5SUfsNQmdQceIPvDS2R6RUY/exec';
 
             // 3. Handle File Upload (Convert to Base64 for Google Apps Script)
@@ -172,7 +170,6 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const sendDataToGoogle = async (finalPayload) => {
                 try {
-                    // Using text/plain avoids CORS preflight issues with Google Scripts
                     const response = await fetch(GOOGLE_SCRIPT_URL, {
                         method: 'POST',
                         headers: {
@@ -204,7 +201,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const file = fileInput.files[0];
                 const reader = new FileReader();
                 reader.onload = function(event) {
-                    // Extract the base64 string without the data URL prefix
                     payload.fileData = event.target.result.split(',')[1];
                     payload.fileName = file.name;
                     payload.fileType = file.type;
@@ -213,27 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 reader.readAsDataURL(file);
             } else {
                 sendDataToGoogle(payload);
-            }
-        });
-    }
-                    // 4. Show Success Message
-                    discoveryForm.innerHTML = 
-                        <div style="text-align: center; padding: 3rem 1rem;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#E61919" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                            <h2 style="color: var(--white); margin-bottom: 1rem;">Application Submitted Successfully!</h2>
-                            <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6;">Our team will review your application and sales data. We will reach out within 24-48 hours via email or WhatsApp to schedule your Discovery Call.</p>
-                        </div>
-                    ;
-                    document.querySelector('.next-steps-box').style.display = 'none';
-                } else {
-                    throw new Error('Network response was not ok');
-                }
-            } catch (error) {
-                console.error('Error submitting form:', error);
-                alert("Something went wrong. Please try again or contact us directly.");
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-                submitBtn.style.opacity = '1';
             }
         });
     }
