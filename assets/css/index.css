@@ -577,7 +577,7 @@
             align-items: center;
             gap: 8px;
             font-size: 0.85rem;
-            color: var(--color-primary);
+            color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 0.15em;
             margin-bottom: 20px;
