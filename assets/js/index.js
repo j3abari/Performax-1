@@ -1,8 +1,8 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
     initParallax();
 });
 
-// Parallax Effect for Floating Elements
+// Parallax Effect for Floating Elements (index.html only)
 function initParallax() {
     const floatingElements = document.querySelectorAll('.floating-element');
     const hero = document.getElementById('hero');
