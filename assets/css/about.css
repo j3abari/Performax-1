@@ -287,7 +287,7 @@
             align-items: center;
             gap: 8px;
             font-size: 0.85rem;
-            color: var(--text-secondary);
+            color: var(--color-primary);
             text-transform: uppercase;
             letter-spacing: 0.15em;
             margin-bottom: 20px;
