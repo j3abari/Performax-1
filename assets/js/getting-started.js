@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const payload = {
                 salesRange: salesRangeSelect ? salesRangeSelect.options[salesRangeSelect.selectedIndex].text : '',
                 adSpend: adSpendSelect ? adSpendSelect.options[adSpendSelect.selectedIndex].text : '',
-                videoWatched: formData.get('video_watched') || '',
+                videoWatched: formData.get('watched_video') || '',
                 name: formData.get('name') || '',
                 phone: formData.get('phone') || '',
                 email: formData.get('email') || '',
