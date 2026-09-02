@@ -21,23 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Qualification Logic - Next Step Button
+    // Next Step Button - Everyone goes to the Discovery Call form
     btnNextStep1.addEventListener('click', () => {
         if (!salesRange.value || !adSpendRange.value) {
             alert('Please select both your sales range and ad spend range.');
             return;
         }
-
-        const qualifiedSales = ['600k-1m', '1m-3m', '3m-5m', 'above-5m'];
-        const qualifiedSpend = ['100k-200k', '200k-400k', 'above-500k'];
-
-        const isQualified = qualifiedSales.includes(salesRange.value) && qualifiedSpend.includes(adSpendRange.value);
-
-        if (isQualified) {
-            showStep(step3, 'Discovery Call');
-        } else {
-            showStep(stepUnqualified, 'Not Qualified Yet');
-        }
+        // No qualification filter - all leads go to the discovery form
+        showStep(step3, 'Discovery Call');
     });
 
     btnPrevUnqualified.addEventListener('click', () => {
