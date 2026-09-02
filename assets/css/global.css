@@ -48,7 +48,7 @@
 
 
 /* Force uniform button colors */
-.nav-cta, .btn-primary, .cta-button, a:contains('Book a Call') { color: #ffffff !important; }
+.nav-cta, .btn-primary, .cta-button { color: #ffffff !important; }
 
 /* --- Mobile Fixes --- */
 @media (max-width: 768px) {
