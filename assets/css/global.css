@@ -57,3 +57,31 @@
     .footer-logo { margin: 0 auto 1.5rem auto !important; display: flex; justify-content: center; }
     .footer-links, .footer-bottom { gap: 1.2rem !important; }
 }
+
+
+/* --- Mobile Footer Centering --- */
+@media (max-width: 768px) {
+    footer > div:first-of-type {
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 1.5rem !important;
+    }
+    
+    footer > div > div {
+        justify-content: center !important;
+        width: 100% !important;
+    }
+
+    /* Stack logo and copyright, remove left border */
+    footer > div > div:first-of-type {
+        flex-direction: column !important;
+        gap: 0.8rem !important;
+    }
+    
+    footer > div > div:first-of-type p {
+        border-left: none !important;
+        padding-left: 0 !important;
+    }
+}
