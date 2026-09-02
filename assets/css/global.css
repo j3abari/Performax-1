@@ -85,3 +85,11 @@
         padding-left: 0 !important;
     }
 }
+
+
+/* Brand Text Highlight */
+.brand-text {
+    color: var(--color-primary);
+    font-weight: 800;
+    font-size: 1.05em;
+}
