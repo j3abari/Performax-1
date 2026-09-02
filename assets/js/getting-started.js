@@ -118,7 +118,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // =============================================
     // Form Submission -> Google Sheets (Apps Script)
     // =============================================
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxQ0MRQisDrZ30z0Fj9OIx0CtBoQRH2kiwS_AnsDHApJ5SUfsNQmdQceIPvDS2R6RUY/exec';
+        // Obfuscated webhook URL to prevent simple scraping
+    const _0x1a = "aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J4UTBNUlFpc0RyWjMwejBG";
+    const _0x1b = "ajlPSXgwQ3RCb1FSSDJraXdTX0Fuc0RIQXBKNVNVZnNOUW1kUWNlSVB2RFMyUjZSVVkvZXhlYw==";
+    const GOOGLE_SCRIPT_URL = atob(_0x1a + _0x1b);
 
     const discoveryForm = document.getElementById('discovery-form');
 
