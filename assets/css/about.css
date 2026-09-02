@@ -798,7 +798,8 @@
 
         .press-logo:hover {
             opacity: 1;
-            color: var(--gray-300);
+            color: var(--color-primary);
+            transform: translateY(-2px);
         }
 
         /* CTA Section */
