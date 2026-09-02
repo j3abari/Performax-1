@@ -49,3 +49,11 @@
 
 /* Force uniform button colors */
 .nav-cta, .btn-primary, .cta-button, a:contains('Book a Call') { color: #ffffff !important; }
+
+/* --- Mobile Fixes --- */
+@media (max-width: 768px) {
+    .nav-cta { padding: 8px 12px !important; font-size: 13px !important; }
+    .footer-content, .footer-bottom, .footer-links, .social-links { flex-direction: column !important; align-items: center !important; text-align: center !important; justify-content: center !important; width: 100%; }
+    .footer-logo { margin: 0 auto 1.5rem auto !important; display: flex; justify-content: center; }
+    .footer-links, .footer-bottom { gap: 1.2rem !important; }
+}
