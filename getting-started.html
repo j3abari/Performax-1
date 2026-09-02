@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performax 1 | Getting Started</title>
+    <meta name="description" content="Qualification funnel for Performax 1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/getting-started.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body class="funnel-body">
+    <header class="funnel-header">
+        <img src="images/logo.png" alt="Performax 1" style="height: 70px; width: auto; object-fit: contain;">
+    </header>
+
+    <div class="breadcrumb-container">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> / <span id="current-step-name">Getting Started</span>
+        </div>
+    </div>
+
+    <main class="funnel-container">
+        <!-- Step 1: Qualification -->
+        <div id="step-1" class="funnel-step active">
+            <h1>Ready To 10X Your Brand Growth?</h1>
+            
+            <div class="qualification-statement">
+                Hey! My brand generated 
+                <select id="sales-range">
+                    <option value="" disabled selected>▼ Select Range</option>
+                    <option value="below-600k">Below 600K</option>
+                    <option value="600k-1m">600K to 1M</option>
+                    <option value="1m-3m">1M to 3M</option>
+                    <option value="3m-5m">3M to 5M</option>
+                    <option value="above-5m">Above 5M</option>
+                </select>
+                in sales in the past month, and we spent 
+                <select id="ad-spend-range">
+                    <option value="" disabled selected>▼ Select Range</option>
+                    <option value="organic">I sell only organically</option>
+                    <option value="0-50k">0 to 50K</option>
+                    <option value="100k-200k">100 to 200K</option>
+                    <option value="200k-400k">200 to 400K</option>
+                    <option value="above-500k">Above 500K</option>
+                </select>
+                on ad spend.
+            </div>
+
+            <div class="funnel-actions">
+                <button class="btn-prev" disabled>PREV STEP</button>
+                <button class="btn-next" id="btn-next-step1">NEXT STEP</button>
+            </div>
+        </div>
+
+        <!-- Step 2: Not Qualified -->
+        <div id="step-unqualified" class="funnel-step">
+            <h1>Unfortunately you won't be a good fit for us at your current stage,</h1>
+            <p>however we can still help you out through a consultation.</p>
+            
+            <div class="funnel-actions">
+                <button class="btn-prev" id="btn-prev-unqualified">PREV STEP</button>
+                <a href="https://calendly.com/performax1/30min" class="btn-next" target="_blank" rel="noopener">BOOK CONSULTATION</a>
+            </div>
+        </div>
+
+        <!-- Step 3: Discovery Call Form -->
+        <div id="step-3" class="funnel-step">
+            <h2>You're Just One Step Away From Becoming The Next Big Brand In Your Market.</h2>
+            
+            <form id="discovery-form">
+                <div class="form-group row-radio">
+                    <label>Have you watched the video about our process? *</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="watched_video" value="yes" required> Yes</label>
+                        <label><input type="radio" name="watched_video" value="no" required> No</label>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="role">Are you the owner? If not, specify your role *</label>
+                    <input type="text" id="role" name="role" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="instagram">Brand Instagram URL *</label>
+                    <input type="url" id="instagram" name="instagram" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="goals">What are your current business goals and challenges? *</label>
+                    <textarea id="goals" name="goals" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Upload Sales Screenshot *</label>
+                    <div class="file-drop-area" id="file-drop-area">
+                        <p>Drag & drop image here, or click to select</p>
+                        <p class="file-info">(Images only, max 10MB)</p>
+                        <input type="file" id="screenshot" name="screenshot" accept="image/*" required>
+                    </div>
+                    <div id="file-name-preview"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="extra">Would you like us to know anything extra? (optional)</label>
+                    <textarea id="extra" name="extra" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>📅 Pick a Meeting Time *</label>
+                    <div class="date-picker-grid" id="date-picker-grid">
+                        <!-- Dates will be generated by JS -->
+                    </div>
+                    <input type="hidden" id="selected-date" name="selected_date" required>
+                    <div id="date-error" class="error-msg" style="display: none;">Please select a meeting time.</div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">Submit Discovery Call Request</button>
+                </div>
+
+                <div class="next-steps-box">
+                    <h3>What happens next?</h3>
+                    <p>After you submit this form, someone from our team will review your submission and contact you within 24-48 hours.</p>
+                    <p>📧 Reach out directly at <a href="mailto:omar@performax1.ai">omar@performax1.ai</a></p>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Step 4: Success Message -->
+        <div id="step-success" class="funnel-step">
+            <h1>Your request has been submitted!</h1>
+            <p>We'll contact you within 24-48 hours.</p>
+            <div class="funnel-actions" style="margin-top: 2rem;">
+                <a href="index.html" class="btn-next">Return to Home</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/js/getting-started.js"></script>
+</body>
+</html>
