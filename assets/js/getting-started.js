@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // ==========================================
             // ⚠️ ضع رابط الـ Google Apps Script الخاص بك هنا
             // ==========================================
-            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec';
+            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxQ0MRQisDrZ30z0Fj9OIx0CtBoQRH2kiwS_AnsDHApJ5SUfsNQmdQceIPvDS2R6RUY/exec';
 
             // 3. Handle File Upload (Convert to Base64 for Google Apps Script)
             const fileInput = this.querySelector('input[type="file"]');
