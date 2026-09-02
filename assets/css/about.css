@@ -411,9 +411,11 @@
             background: linear-gradient(145deg, var(--black-medium) 0%, var(--black-soft) 100%);
             border: 1px solid rgba(255,255,255,0.06);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 24px;
+            gap: 0.5rem;
         }
 
         .story-image:first-child {
@@ -422,15 +424,15 @@
         }
 
         .story-image svg {
-            width: 48px;
-            height: 48px;
-            color: var(--green-primary);
-            opacity: 0.6;
+            width: 36px;
+            height: 36px;
+            color: var(--color-primary);
+            opacity: 0.9;
         }
 
         .story-image.large svg {
-            width: 64px;
-            height: 64px;
+            width: 44px;
+            height: 44px;
         }
 
         /* Founders Section */
