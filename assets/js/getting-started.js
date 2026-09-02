@@ -125,16 +125,62 @@ document.addEventListener('DOMContentLoaded', () => {
     generateDates();
 
     // Form Submission
+    // Form Submission (Connected to Webhook)
     const discoveryForm = document.getElementById('discovery-form');
-    discoveryForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        if (!selectedDateInput.value) {
-            dateError.style.display = 'block';
-            return;
-        }
+    if (discoveryForm) {
+        discoveryForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('.btn-submit');
+            const originalText = submitBtn.textContent;
+            
+            // 1. Change button state to loading
+            submitBtn.textContent = 'Submitting Request...';
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.7';
 
-        // Frontend only success message
-        showStep(stepSuccess, 'Success');
-    });
+            // 2. Gather all form data
+            const formData = new FormData(this);
+            
+            // Add the qualification answers from Step 1
+            const salesRange = document.getElementById('sales-range').options[document.getElementById('sales-range').selectedIndex].text;
+            const adSpend = document.getElementById('ad-spend-range').options[document.getElementById('ad-spend-range').selectedIndex].text;
+            
+            formData.append('Sales_Generated', salesRange);
+            formData.append('Ad_Spend', adSpend);
+
+            // ==========================================
+            // ⚠️ ضع رابط الـ WEBHOOK الخاص بك هنا
+            // ==========================================
+            const WEBHOOK_URL = 'https://hook.us1.make.com/YOUR_WEBHOOK_ID_HERE'; 
+
+            try {
+                // 3. Send data to the Webhook
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    body: formData // Sends text and the image file automatically
+                });
+
+                if (response.ok || response.type === 'opaque') {
+                    // 4. Show Success Message
+                    discoveryForm.innerHTML = 
+                        <div style="text-align: center; padding: 3rem 1rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#E61919" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                            <h2 style="color: var(--white); margin-bottom: 1rem;">Application Submitted Successfully!</h2>
+                            <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6;">Our team will review your application and sales data. We will reach out within 24-48 hours via email or WhatsApp to schedule your Discovery Call.</p>
+                        </div>
+                    ;
+                    document.querySelector('.next-steps-box').style.display = 'none';
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                alert("Something went wrong. Please try again or contact us directly.");
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
+            }
+        });
+    }
 });
