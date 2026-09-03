@@ -199,3 +199,63 @@
 }
 
 .story-image { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important; }
+
+/* ========================================================= */
+/* THEME LOGO SWAPPING                                       */
+/* ========================================================= */
+.theme-logo.light-logo { display: none !important; }
+[data-theme="light"] .theme-logo.dark-logo { display: none !important; }
+[data-theme="light"] .theme-logo.light-logo { display: inline-block !important; }
+
+/* ========================================================= */
+/* GLASSMORPHISM RESTORED                                    */
+/* ========================================================= */
+/* Base Glass (Dark Mode) */
+.case-card, .detail-card, .founder-card, .info-card, .pricing-card, 
+.process-card, .service-card, .service-detail-card, .testimonial-card, 
+.value-card, .who-card, .contact-card, .story-image, .phase-card {
+    background: rgba(255, 255, 255, 0.02) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: var(--radius-lg, 16px) !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Light Mode Glass (Frosted) */
+[data-theme="light"] .case-card, [data-theme="light"] .detail-card, 
+[data-theme="light"] .founder-card, [data-theme="light"] .info-card, 
+[data-theme="light"] .pricing-card, [data-theme="light"] .process-card, 
+[data-theme="light"] .service-card, [data-theme="light"] .service-detail-card, 
+[data-theme="light"] .testimonial-card, [data-theme="light"] .value-card, 
+[data-theme="light"] .who-card, [data-theme="light"] .contact-card, 
+[data-theme="light"] .story-image, [data-theme="light"] .phase-card {
+    background: rgba(255, 255, 255, 0.5) !important; 
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Light Mode Hover Glass */
+[data-theme="light"] .case-card:hover, [data-theme="light"] .detail-card:hover, 
+[data-theme="light"] .founder-card:hover, [data-theme="light"] .info-card:hover, 
+[data-theme="light"] .pricing-card:hover, [data-theme="light"] .process-card:hover, 
+[data-theme="light"] .service-card:hover, [data-theme="light"] .service-detail-card:hover, 
+[data-theme="light"] .testimonial-card:hover, [data-theme="light"] .value-card:hover, 
+[data-theme="light"] .who-card:hover, [data-theme="light"] .contact-card:hover, 
+[data-theme="light"] .story-image:hover, [data-theme="light"] .phase-card:hover {
+    background: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* ========================================================= */
+/* MOBILE FIXES FOR NAVBAR SQUISH                            */
+/* ========================================================= */
+@media (max-width: 768px) {
+    #navbar .logo img { height: 32px !important; }
+    #theme-toggle { padding: 4px !important; margin-right: 8px !important; }
+    .nav-cta { padding: 8px 14px !important; font-size: 11px !important; white-space: nowrap !important; }
+    .nav-content { padding: 0 10px !important; }
+}
