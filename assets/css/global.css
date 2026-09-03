@@ -101,3 +101,40 @@
     .press-logos { gap: 20px !important; padding: 0 15px !important; }
     .founder-name { text-align: left !important; }
 }
+
+/* ========================================================= */
+/* LIQUID GLASS STYLE OVERRIDES (GLASSMORPHISM + RED GLOW)   */
+/* ========================================================= */
+.case-card, .detail-card, .founder-card, .info-card, .pricing-card, 
+.process-card, .service-card, .service-detail-card, .testimonial-card, 
+.value-card, .who-card {
+    background: rgba(255, 255, 255, 0.02) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border-radius: var(--radius-lg, 16px) !important; /* Make edges slightly softer for glass */
+}
+
+/* Hover Red Glow */
+.case-card:hover, .detail-card:hover, .founder-card:hover, .info-card:hover, 
+.pricing-card:hover, .process-card:hover, .service-card:hover, 
+.service-detail-card:hover, .testimonial-card:hover, .value-card:hover, 
+.who-card:hover {
+    transform: translateY(-6px) !important;
+    background: rgba(255, 255, 255, 0.035) !important;
+    border-color: rgba(230, 25, 25, 0.4) !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 35px rgba(230, 25, 25, 0.18) !important;
+}
+
+/* Disable old gradient top-borders to keep the glass effect clean */
+.case-card::before, .detail-card::before, .founder-card::before, .info-card::before, 
+.pricing-card::before, .process-card::before, .service-card::before, 
+.service-detail-card::before, .testimonial-card::before, .value-card::before, 
+.who-card::before {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
