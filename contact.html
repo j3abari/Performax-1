@@ -3,49 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Performax1 - Get Started</title>
-    <meta http-equiv="refresh" content="0; url=getting-started.html">
-    <link rel="icon" type="image/png" href="images/logo.png">
+    <title>Contact Us | Performax1</title>
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/contact.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            background: #0a0a0a;
-            color: #ffffff;
-            font-family: system-ui, -apple-system, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        a { color: #E61919; text-decoration: none; }
+        body { padding-top: 100px; background: var(--black); color: var(--text-secondary); }
+        .contact-container { max-width: 600px; margin: 0 auto; padding: 60px 20px; }
+        h1 { color: var(--text-primary); font-size: 3rem; margin-bottom: 1rem; text-align: center; }
+        p.subtitle { text-align: center; margin-bottom: 3rem; font-size: 1.1rem; }
+        
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500; }
+        .form-control { width: 100%; padding: 12px 16px; border-radius: 8px; border: 1px solid var(--bg-surface-hover); background: var(--bg-surface); color: var(--text-primary); font-family: inherit; font-size: 1rem; transition: all 0.3s ease; }
+        .form-control:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(230, 25, 25, 0.1); }
+        textarea.form-control { resize: vertical; min-height: 150px; }
+        
+        .submit-btn { width: 100%; background: var(--color-primary); color: #fff; padding: 14px 24px; border: none; border-radius: 8px; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease; }
+        .submit-btn:hover { background: var(--color-primary-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(230, 25, 25, 0.3); }
+        
+        .status-message { margin-top: 1rem; padding: 12px; border-radius: 8px; text-align: center; font-weight: 600; display: none; }
+        .status-success { background: rgba(34, 197, 94, 0.1); color: #22c55e; display: block; }
+        .status-error { background: rgba(239, 68, 68, 0.1); color: #ef4444; display: block; }
     </style>
 </head>
 <body>
-    <p>Redirecting... <a href="getting-started.html">Click here</a> if not redirected.</p>
-    <script>window.location.href = 'getting-started.html';</script>
+    <nav id="navbar" style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(10,10,10,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 0.8rem 0;">
+        <div class="container nav-content" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" class="theme-logo dark-logo" alt="Performax1" style="height: 42px; width: auto; object-fit: contain;">
+                <img src="images/logo-light.png" class="theme-logo light-logo" alt="Performax1" style="height: 42px; width: auto; object-fit: contain;">
+            </a>
+            <div style="display: flex; align-items: center;">
+                <button id="theme-toggle" aria-label="Toggle Theme" style="background: none; border: none; cursor: pointer; padding: 4px; color: var(--text-primary); display: flex; align-items: center; justify-content: center; margin-right: 8px; transition: color 0.3s;">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+                <a href="getting-started.html" class="nav-cta">Scale Your Brand &rarr;</a>
+            </div>
+        </div>
+    </nav>
 
-    <!-- Theme Toggle Script -->
+    <div class="contact-container">
+        <h1>Contact Us</h1>
+        <p class="subtitle">Have a question or want to discuss a custom partnership? Drop us a message and we'll get back to you within 24 hours.</p>
+        
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" class="form-control" required placeholder="John Doe">
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" class="form-control" required placeholder="john@company.com">
+            </div>
+            <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" class="form-control" required placeholder="How can we help you scale?"></textarea>
+            </div>
+            <button type="submit" class="submit-btn" id="submitBtn">Send Message</button>
+            <div id="statusMessage" class="status-message"></div>
+        </form>
+    </div>
+
+    <footer style="background: var(--bg-surface); padding: 1.5rem 20px; border-top: 1px solid var(--bg-surface-hover);">
+        <div
+            style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+
+            <!-- Left: Logo & Copyright -->
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <a href="index.html"><img src="images/logo.png" class="theme-logo dark-logo" alt="Performax1" style="height: 35px; width: auto; object-fit: contain;"><img src="images/logo-light.png" class="theme-logo light-logo" alt="Performax1" style="height: 35px; width: auto; object-fit: contain;"></a>
+                <p
+                    style="color: var(--text-muted); font-size: 0.85rem; margin: 0; border-left: 1px solid var(--bg-surface-hover); padding-left: 1rem;">
+                    &copy; 2026 <span class="brand-text">Performax1</span></p>
+            </div>
+
+            <!-- Center: Links -->
+            <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                <a href="about.html"
+                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: 0.3s;"
+                    onmouseover="this.style.color='var(--color-primary)'"
+                    onmouseout="this.style.color='var(--text-secondary)'">About</a>
+                <a href="services.html"
+                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: 0.3s;"
+                    onmouseover="this.style.color='var(--color-primary)'"
+                    onmouseout="this.style.color='var(--text-secondary)'">Services</a>
+                <a href="getting-started.html"
+                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: 0.3s;"
+                    onmouseover="this.style.color='var(--color-primary)'"
+                    onmouseout="this.style.color='var(--text-secondary)'">Get Started</a>
+                <a href="privacy.html" style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; transition: 0.3s;"
+                    onmouseover="this.style.color='var(--color-primary)'"
+                    onmouseout="this.style.color='var(--text-secondary)'">Privacy</a>
+            </div>
+
+            <!-- Right: All 6 Social Icons -->
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <!-- Instagram -->
+                <a href="#" style="color: var(--text-muted); transition: 0.3s;"
+                    onmouseover="this.style.color='var(--color-primary)'"
+                    onmouseout="this.style.color='var(--text-muted)'" title="Instagram"><svg width="18" height="18"
+                        viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                    </svg></a>
+                <!-- Facebook -->
+                <a href="#" style="color: var(--text-muted); transition: 0.3s;"
+                    onmouseover="this.style.color='var(--color-primary)'"
+                    onmouseout="this.style.color='var(--text-muted)'" title="Facebook"><svg width="18" height="18"
+                        viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+                    </svg></a>
+                <!-- YouTube -->
+                <a href="#" style="color: var(--text-muted); transition: 0.3s;"
+                    onmouseover="this.style.color='var(--color-primary)'"
+                    onmouseout="this.style.color='var(--text-muted)'" title="YouTube"><svg width="18" height="18"
+                        viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                    </svg></a>
+                <!-- TikTok -->
+                <a href="#" style="color: var(--text-muted); transition: 0.3s;"
+                    onmouseover="this.style.color='var(--color-primary)'"
+                    onmouseout="this.style.color='var(--text-muted)'" title="TikTok"><svg width="18" height="18"
+                        viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 2.22-1.12 4.39-2.9 5.86-1.6 1.33-3.69 2.01-5.75 1.83-2.11-.18-4.08-1.21-5.46-2.82-1.37-1.6-2.03-3.7-1.89-5.8.14-2.1 1.09-4.08 2.62-5.54 1.5-1.42 3.56-2.22 5.62-2.16.29 0 .59.02.88.06v4.13c-.92-.2-1.89-.13-2.76.24-.87.37-1.61 1.01-2.07 1.82-.46.8-.59 1.76-.36 2.65.23.88.75 1.65 1.48 2.15.73.5 1.63.74 2.52.66.89-.08 1.71-.5 2.33-1.17.61-.66.97-1.54 1-2.45.04-3.15.01-6.29.02-9.44.02-4.22-.03-8.43.05-12.65z" />
+                    </svg></a>
+                <!-- X / Twitter -->
+                <a href="#" style="color: var(--text-muted); transition: 0.3s;"
+                    onmouseover="this.style.color='var(--color-primary)'"
+                    onmouseout="this.style.color='var(--text-muted)'" title="X / Twitter"><svg width="18" height="18"
+                        viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg></a>
+                <!-- LinkedIn -->
+                <a href="#" style="color: var(--text-muted); transition: 0.3s;"
+                    onmouseover="this.style.color='var(--color-primary)'"
+                    onmouseout="this.style.color='var(--text-muted)'" title="LinkedIn"><svg width="18" height="18"
+                        viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                    </svg></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Theme Script -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const themeToggle = document.getElementById('theme-toggle');
-            const currentTheme = localStorage.getItem('theme');
-            if (currentTheme) {
-                document.body.setAttribute('data-theme', currentTheme);
-            }
-            if (themeToggle) {
-                themeToggle.addEventListener('click', () => {
-                    if (document.body.getAttribute('data-theme') === 'light') {
-                        document.body.removeAttribute('data-theme');
-                        localStorage.setItem('theme', 'dark');
-                    } else {
-                        document.body.setAttribute('data-theme', 'light');
-                        localStorage.setItem('theme', 'light');
-                    }
-                });
+        const themeToggle = document.getElementById('theme-toggle');
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'light') {
+            document.body.setAttribute('data-theme', 'light');
+        }
+        themeToggle.addEventListener('click', () => {
+            if (document.body.getAttribute('data-theme') === 'light') {
+                document.body.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
             }
         });
     </script>
+    
+    <!-- Contact Form Submission Script -->
+    <script>
+        // UPDATE THIS URL AFTER DEPLOYING GOOGLE APPS SCRIPT
+        const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+        
+        const form = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const statusMsg = document.getElementById('statusMessage');
 
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
+                statusMsg.textContent = 'Error: Please set up the Google Apps Script URL first.';
+                statusMsg.className = 'status-message status-error';
+                return;
+            }
+
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            data.timestamp = new Date().toISOString();
+
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            statusMsg.className = 'status-message';
+
+            try {
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                statusMsg.textContent = 'Message sent successfully! We will contact you soon.';
+                statusMsg.className = 'status-message status-success';
+                form.reset();
+            } catch (error) {
+                console.error('Error!', error.message);
+                statusMsg.textContent = 'Something went wrong. Please try emailing us directly.';
+                statusMsg.className = 'status-message status-error';
+            } finally {
+                submitBtn.textContent = 'Send Message';
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
 
     <!-- Scroll to Top Button -->
     <button id="scrollToTopBtn" aria-label="Scroll to top">
