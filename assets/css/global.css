@@ -455,3 +455,42 @@ html, body {
     }
 }
 
+/* ========================================================= */
+/* FOUNDER CARD — Contact Link Hover Effects                  */
+/* ========================================================= */
+.founder-contact-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    transition: transform 0.25s ease, color 0.25s ease;
+    cursor: default;
+}
+
+.founder-contact-row a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: clamp(0.75rem, 4vw, 0.95rem);
+    white-space: nowrap;
+    transition: color 0.25s ease;
+}
+
+.founder-contact-row svg {
+    flex-shrink: 0;
+    min-width: 18px;
+    transition: fill 0.25s ease, stroke 0.25s ease, transform 0.25s ease;
+}
+
+.founder-contact-row:hover {
+    transform: translateY(-3px);
+}
+
+.founder-contact-row:hover a {
+    color: var(--color-primary);
+}
+
+.founder-contact-row:hover svg {
+    fill: var(--color-primary);
+    stroke: var(--color-primary);
+    transform: scale(1.15);
+}
