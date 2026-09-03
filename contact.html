@@ -173,6 +173,12 @@
                                 required></textarea>
                         </div>
 
+                        
+                        <div class="form-group">
+                            <label for="image" class="form-label">Attach an Image (Optional)</label>
+                            <input type="file" id="image" name="image" class="form-input" accept="image/*" style="background: transparent; padding: 10px 0;">
+                        </div>
+
                         <div class="form-group">
                             <label for="source" class="form-label">How did you hear about us?</label>
                             <select id="source" name="source" class="form-select">
@@ -207,7 +213,7 @@
                             </svg>
                         </div>
                         <h3 class="info-card-title">Book a Call</h3>
-                        <p class="info-card-description">Skip the formâ€”book a 30-minute strategy call directly.</p>
+                        <p class="info-card-description">Skip the form—book a 30-minute strategy call directly.</p>
                         <a href="https://calendly.com/performax1/30min" class="info-card-link" target="_blank"
                             rel="noopener">
                             Schedule Now
@@ -229,8 +235,8 @@
                         </div>
                         <h3 class="info-card-title">Email</h3>
                         <p class="info-card-description">Prefer email? Send us a message directly.</p>
-                        <a href="mailto:hello@performax1.ai" class="info-card-link">
-                            hello@performax1.ai
+                        <a href="mailto:performax.one1@gmail.com" class="info-card-link">
+                            performax.one1@gmail.com
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd"
                                     d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
@@ -248,7 +254,7 @@
                             </svg>
                         </div>
                         <h3 class="info-card-title">Response Time</h3>
-                        <p class="info-card-description">We typically respond within 4 business hours.</p>
+                        <p class="info-card-description">We typically respond within 24 hours.</p>
                     </div>
                 </div>
             </div>
@@ -262,7 +268,7 @@
                 <span class="section-tag">Human Touch</span>
                 <h2 class="section-title">Talk to a Founder, Not a Sales Rep</h2>
                 <p class="section-subtitle">Omar personally handles all initial conversations. No gatekeepers, no
-                    scriptsâ€”just genuine discussion about your business needs.</p>
+                    scripts—just genuine discussion about your business needs.</p>
             </div>
 
             <div class="founders-grid">
@@ -305,7 +311,7 @@
             <div class="cta-content reveal">
                 <h2 class="cta-title">Prefer to book directly?</h2>
                 <p class="cta-subtitle">Schedule a free Growth Mapping Call with one of our founders. We'll explore your
-                    automation opportunities togetherâ€”no commitment required.</p>
+                    growth opportunities together—no commitment required.</p>
                 <a href="https://calendly.com/performax1/30min" class="cta-button"
                     style="color: #ffffff !important;" target="_blank" rel="noopener">
                     Book Your Free Call
@@ -315,7 +321,7 @@
                             clip-rule="evenodd" />
                     </svg>
                 </a>
-                <p class="cta-note">30 minutes Â· 100% free Â· Zero obligation</p>
+                <p class="cta-note">30 minutes · 100% free · Zero obligation</p>
             </div>
         </div>
     </section>
@@ -491,6 +497,18 @@
                 const formData = new FormData(form);
                 const data = Object.fromEntries(formData.entries());
                 data.timestamp = new Date().toISOString();
+
+                const fileInput = document.getElementById('image');
+                if (fileInput && fileInput.files.length > 0) {
+                    const file = fileInput.files[0];
+                    data.fileName = file.name;
+                    data.mimeType = file.type;
+                    const reader = new FileReader();
+                    data.fileData = await new Promise((resolve) => {
+                        reader.onload = () => resolve(reader.result.split(',')[1]);
+                        reader.readAsDataURL(file);
+                    });
+                }
 
                 submitBtn.textContent = 'Sending...';
                 submitBtn.disabled = true;
