@@ -475,7 +475,7 @@
     <!-- Contact Form Submission Script -->
     <script>
         // UPDATE THIS URL AFTER DEPLOYING GOOGLE APPS SCRIPT
-        const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+        const GOOGLE_SCRIPT_URL = atob('aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J6UHFocnpScEk0dTNhNEhDYVFROW1adzBoM3lEOWpfLWZmVHdtOEVWejV0aDhiZm9wRG13YUNhS0cyWEZnb0tSX3hvUS9leGVj');
         
         const form = document.getElementById('contactForm');
         const submitBtn = document.getElementById('submitBtn');
@@ -485,13 +485,7 @@
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 
-                if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
-                    statusMsg.textContent = 'Error: Please set up the Google Apps Script URL first.';
-                    statusMsg.style.display = 'block';
-                    statusMsg.style.background = 'rgba(239, 68, 68, 0.1)';
-                    statusMsg.style.color = '#ef4444';
-                    return;
-                }
+                
 
                 const formData = new FormData(form);
                 const data = Object.fromEntries(formData.entries());
