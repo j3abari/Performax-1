@@ -1,3 +1,4 @@
+html { scroll-behavior: smooth; }
 /* Performax 1 - Global Design Tokens */
 :root {
     /* Core Brand Colors */
