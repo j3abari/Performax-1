@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const stepUnqualified = document.getElementById('step-unqualified');
     const step3 = document.getElementById('step-3');
     const stepSuccess = document.getElementById('step-success');
-    const currentStepName = document.getElementById('current-step-name');
 
     const btnNextStep1 = document.getElementById('btn-next-step1');
     const btnPrevUnqualified = document.getElementById('btn-prev-unqualified');
@@ -179,8 +178,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     const nextStepsBox = document.querySelector('.next-steps-box');
                     if (nextStepsBox) nextStepsBox.style.display = 'none';
                 } catch (error) {
-                    console.error('Submission error:', error);
-                    alert('Something went wrong. Please contact us at performax.one1@gmail.com');
+                    // Remove previous error if any
+                    const prevErr = discoveryForm.querySelector('.form-submit-error');
+                    if (prevErr) prevErr.remove();
+                    // Show inline styled error
+                    const errDiv = document.createElement('div');
+                    errDiv.className = 'form-submit-error';
+                    errDiv.style.cssText = 'background:rgba(230,25,25,0.08);border:1px solid rgba(230,25,25,0.3);color:#ff6b6b;padding:1rem 1.25rem;border-radius:8px;margin-top:1rem;font-size:0.9rem;line-height:1.5;';
+                    errDiv.textContent = 'Something went wrong. Please try again or contact us at performax.one1@gmail.com';
+                    discoveryForm.appendChild(errDiv);
                     submitBtn.textContent = originalText;
                     submitBtn.disabled = false;
                     submitBtn.style.opacity = '1';
