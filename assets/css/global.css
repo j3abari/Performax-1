@@ -205,7 +205,7 @@
 /* ========================================================= */
 .theme-logo.light-logo { display: none !important; }
 [data-theme="light"] .theme-logo.dark-logo { display: none !important; }
-[data-theme="light"] .theme-logo.light-logo { display: inline-block !important; transform: scale(1.35); transform-origin: left center; }
+[data-theme="light"] .theme-logo.light-logo { display: inline-block !important; }
 
 /* ========================================================= */
 /* GLASSMORPHISM RESTORED                                    */
