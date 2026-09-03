@@ -323,3 +323,71 @@
     box-shadow: 0 0 50px var(--green-glow);
 }
 
+
+/* Mobile Footer Fixes */
+@media (max-width: 768px) {
+    .social-wrapper {
+        border-left: none !important;
+        padding-left: 0 !important;
+        justify-content: center !important;
+        width: 100%;
+        margin-top: 1rem;
+    }
+    footer > div > div {
+        flex: 1 1 100% !important;
+        justify-content: center !important;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Navbar Mobile Fixes */
+@media (max-width: 480px) {
+    .nav-cta {
+        padding: 6px 10px !important;
+        font-size: 10px !important;
+    }
+    .theme-logo {
+        height: 28px !important;
+    }
+    nav .container {
+        padding: 0 10px !important;
+    }
+}
+
+/* About Page Typography Fix */
+.hero h1, .section-title, .story-text h2 {
+    font-family: 'Inter', -apple-system, sans-serif !important;
+    line-height: 1.25 !important;
+}
+
+/* Contact Page Mobile Alignment */
+@media (max-width: 768px) {
+    /* Align headers to left to match form/cards on mobile */
+    .hero-content, .section-header, .founder-section, .founder-cta {
+        text-align: left !important;
+    }
+    
+    /* Make founder card stretch full width to match others */
+    .founder-card {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+}
+
+/* Navbar Button Fix (Prevent text wrapping) */
+.nav-cta {
+    white-space: nowrap !important;
+}
+
+/* Form and Page Alignment on Mobile (Force Left Alignment for Consistency) */
+@media (max-width: 768px) {
+    .cta-content, .hero-subtitle, .founder-section, .founder-card {
+        text-align: left !important;
+    }
+    
+    /* Make sure all contact forms and cards align properly */
+    section#contact-form > div {
+        align-items: flex-start !important;
+    }
+}
