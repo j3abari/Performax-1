@@ -93,7 +93,7 @@
         }
 
         .logo span {
-            color: var(--green-primary);
+            color: var(--color-primary);
         }
 
         .nav-links {
@@ -109,7 +109,7 @@
         }
 
         .nav-links a {
-            color: var(--gray-400);
+            color: var(--text-secondary);
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
@@ -215,7 +215,7 @@
 
         .hero-subtitle {
             font-size: clamp(1rem, 2vw, 1.2rem);
-            color: var(--gray-400);
+            color: var(--text-secondary);
             max-width: 600px;
             margin: 0 auto;
             line-height: 1.7;
@@ -273,7 +273,7 @@
             left: 0;
             right: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--green-primary), var(--green-bright));
+            background: linear-gradient(90deg, var(--color-primary), var(--color-primary-hover));
         }
 
         .form-title {
@@ -297,7 +297,7 @@
 
         .form-label {
             font-size: 0.9rem;
-            color: var(--gray-300);
+            color: var(--text-primary);
             font-weight: 500;
         }
 
@@ -316,14 +316,14 @@
 
         .form-input::placeholder,
         .form-textarea::placeholder {
-            color: var(--gray-500);
+            color: var(--color-primary); /* Red icons */
         }
 
         .form-input:focus,
         .form-textarea:focus,
         .form-select:focus {
             outline: none;
-            border-color: var(--green-primary);
+            border-color: var(--color-primary);
             box-shadow: 0 0 0 3px var(--green-glow);
         }
 
@@ -442,7 +442,7 @@
         .info-card-icon svg {
             width: 24px;
             height: 24px;
-            color: var(--green-primary);
+            color: var(--color-primary);
         }
 
         .info-card-title {
@@ -454,7 +454,7 @@
         }
 
         .info-card-description {
-            color: var(--gray-400);
+            color: var(--text-secondary);
             font-size: 0.95rem;
             line-height: 1.7;
             margin-bottom: 16px;
@@ -540,7 +540,7 @@
 
         .section-subtitle {
             font-size: 1.1rem;
-            color: var(--gray-400);
+            color: var(--text-secondary);
             max-width: 700px;
             margin: 0 auto;
             line-height: 1.7;
@@ -578,7 +578,7 @@
             left: 0;
             right: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--green-primary), var(--green-bright));
+            background: linear-gradient(90deg, var(--color-primary), var(--color-primary-hover));
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -600,7 +600,7 @@
         }
 
         .founder-title {
-            color: var(--green-primary);
+            color: var(--color-primary);
             font-size: 0.95rem;
             font-weight: 600;
             margin-bottom: 16px;
@@ -618,25 +618,25 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            color: var(--gray-400);
+            color: var(--text-secondary);
             font-size: 0.9rem;
         }
 
         .founder-contact-item svg {
             width: 18px;
             height: 18px;
-            color: var(--gray-500);
+            color: var(--color-primary); /* Red icons */
             flex-shrink: 0;
         }
 
         .founder-contact-item a {
-            color: var(--gray-300);
+            color: var(--text-primary);
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .founder-contact-item a:hover {
-            color: var(--green-primary);
+            color: var(--color-primary);
         }
 
         .founder-cta {
@@ -703,7 +703,7 @@
 
         .cta-subtitle {
             font-size: 1.05rem;
-            color: var(--gray-400);
+            color: var(--text-secondary);
             margin-bottom: 36px;
             line-height: 1.7;
         }
@@ -742,7 +742,7 @@
         .cta-note {
             margin-top: 24px;
             font-size: 0.9rem;
-            color: var(--gray-500);
+            color: var(--color-primary); /* Red icons */
         }
 
         /* Footer */
@@ -776,7 +776,7 @@
         }
 
         .footer-logo span {
-            color: var(--green-primary);
+            color: var(--color-primary);
         }
 
         .footer-links {
@@ -786,7 +786,7 @@
         }
 
         .footer-links a {
-            color: var(--gray-400);
+            color: var(--text-secondary);
             text-decoration: none;
             font-size: 0.9rem;
             transition: color 0.3s ease;
@@ -807,7 +807,7 @@
             top: 0;
             left: 0;
             height: 3px;
-            background: linear-gradient(90deg, var(--green-primary), var(--green-bright));
+            background: linear-gradient(90deg, var(--color-primary), var(--color-primary-hover));
             z-index: 9999;
             transform-origin: left;
             transform: scaleX(0);
