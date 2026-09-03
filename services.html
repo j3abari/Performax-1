@@ -471,7 +471,12 @@
                             style="color: var(--text-secondary); text-decoration: none; font-size: clamp(0.75rem, 4vw, 0.95rem); white-space: nowrap;">omarj3abari@gmail.com</a>
                                         </div>
                     <div style="margin-top: 2rem; display: flex; justify-content: center;">
-                        <a href="https://calendly.com/performax1/30min" target="_blank" rel="noopener" class="nav-cta" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.95rem; padding: 0.8rem 1.5rem;">
+                        
+                <button id="theme-toggle" aria-label="Toggle Theme" style="background: none; border: none; cursor: pointer; padding: 8px; color: var(--text-primary); display: flex; align-items: center; justify-content: center; margin-right: 15px; transition: color 0.3s;">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+<a href="https://calendly.com/performax1/30min" target="_blank" rel="noopener" class="nav-cta" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.95rem; padding: 0.8rem 1.5rem;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                                 <line x1="16" y1="2" x2="16" y2="6"></line>
@@ -596,6 +601,29 @@
 
 
     <script src="assets/js/main.js"></script>
+
+    <!-- Theme Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const currentTheme = localStorage.getItem('theme');
+            if (currentTheme) {
+                document.body.setAttribute('data-theme', currentTheme);
+            }
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    if (document.body.getAttribute('data-theme') === 'light') {
+                        document.body.removeAttribute('data-theme');
+                        localStorage.setItem('theme', 'dark');
+                    } else {
+                        document.body.setAttribute('data-theme', 'light');
+                        localStorage.setItem('theme', 'light');
+                    }
+                });
+            }
+        });
+    </script>
+
 </body>
 
 </html>

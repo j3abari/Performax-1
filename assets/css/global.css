@@ -138,3 +138,63 @@
     opacity: 0 !important;
     visibility: hidden !important;
 }
+
+
+/* ========================================================= */
+/* LIGHT THEME (DAY MODE) OVERRIDES                          */
+/* ========================================================= */
+[data-theme="light"] {
+    --bg-primary: #f8fafc;
+    --bg-surface: #ffffff;
+    --bg-surface-hover: #f1f5f9;
+    
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    
+    --black-medium: #ffffff;
+    --black: #f8fafc;
+    --white: #0f172a; /* Invert explicit whites */
+}
+
+/* Toggle Icon Visibility */
+[data-theme="light"] #theme-toggle .sun-icon { display: block !important; }
+[data-theme="light"] #theme-toggle .moon-icon { display: none !important; }
+
+/* Light Theme Navbar */
+[data-theme="light"] .navbar {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Light Theme Cards (Liquid Glass) */
+[data-theme="light"] .case-card, [data-theme="light"] .detail-card, 
+[data-theme="light"] .founder-card, [data-theme="light"] .info-card, 
+[data-theme="light"] .pricing-card, [data-theme="light"] .process-card, 
+[data-theme="light"] .service-card, [data-theme="light"] .service-detail-card, 
+[data-theme="light"] .testimonial-card, [data-theme="light"] .value-card, 
+[data-theme="light"] .who-card, [data-theme="light"] .contact-card {
+    background: rgba(255, 255, 255, 0.7) !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    border-top: 1px solid rgba(255, 255, 255, 1) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Light Theme Hover */
+[data-theme="light"] .case-card:hover, [data-theme="light"] .detail-card:hover, 
+[data-theme="light"] .founder-card:hover, [data-theme="light"] .info-card:hover, 
+[data-theme="light"] .pricing-card:hover, [data-theme="light"] .process-card:hover, 
+[data-theme="light"] .service-card:hover, [data-theme="light"] .service-detail-card:hover, 
+[data-theme="light"] .testimonial-card:hover, [data-theme="light"] .value-card:hover, 
+[data-theme="light"] .who-card:hover, [data-theme="light"] .contact-card:hover {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-color: rgba(230, 25, 25, 0.3) !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08), 0 0 25px rgba(230, 25, 25, 0.1) !important;
+}
+
+/* General overrides for text on white */
+[data-theme="light"] .section-subtitle, 
+[data-theme="light"] .founder-bio, 
+[data-theme="light"] p {
+    color: var(--text-secondary) !important;
+}

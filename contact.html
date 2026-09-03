@@ -23,5 +23,28 @@
 <body>
     <p>Redirecting... <a href="getting-started.html">Click here</a> if not redirected.</p>
     <script>window.location.href = 'getting-started.html';</script>
+
+    <!-- Theme Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const currentTheme = localStorage.getItem('theme');
+            if (currentTheme) {
+                document.body.setAttribute('data-theme', currentTheme);
+            }
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    if (document.body.getAttribute('data-theme') === 'light') {
+                        document.body.removeAttribute('data-theme');
+                        localStorage.setItem('theme', 'dark');
+                    } else {
+                        document.body.setAttribute('data-theme', 'light');
+                        localStorage.setItem('theme', 'light');
+                    }
+                });
+            }
+        });
+    </script>
+
 </body>
 </html>
