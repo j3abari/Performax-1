@@ -62,6 +62,7 @@ function initCounters() {
 
 function animateCounter(element) {
     const target = parseFloat(element.dataset.target);
+    if (isNaN(target)) return;
     const duration = 2000;
     const startTime = performance.now();
     const isDecimal = target % 1 !== 0;

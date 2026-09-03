@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const stepUnqualified = document.getElementById('step-unqualified');
     const step3 = document.getElementById('step-3');
     const stepSuccess = document.getElementById('step-success');
+    const currentStepName = document.getElementById('currentStepName');
 
     const btnNextStep1 = document.getElementById('btn-next-step1');
     const btnPrevUnqualified = document.getElementById('btn-prev-unqualified');
@@ -12,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Show/Hide steps
     function showStep(stepElement, stepName) {
+        if (!stepElement) return;
         document.querySelectorAll('.funnel-step').forEach(step => {
             step.classList.remove('active');
         });
@@ -21,18 +23,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Next Step Button - Everyone goes to the Discovery Call form
-    btnNextStep1.addEventListener('click', () => {
-        if (!salesRange.value || !adSpendRange.value) {
-            alert('Please select both your sales range and ad spend range.');
-            return;
-        }
-        // No qualification filter - all leads go to the discovery form
-        showStep(step3, 'Discovery Call');
-    });
+    if (btnNextStep1) {
+        btnNextStep1.addEventListener('click', () => {
+            if (salesRange && adSpendRange && (!salesRange.value || !adSpendRange.value)) {
+                alert('Please select both your sales range and ad spend range.');
+                return;
+            }
+            // No qualification filter - all leads go to the discovery form
+            showStep(step3, 'Discovery Call');
+        });
+    }
 
-    btnPrevUnqualified.addEventListener('click', () => {
-        showStep(step1, 'Getting Started');
-    });
+    if (btnPrevUnqualified) {
+        btnPrevUnqualified.addEventListener('click', () => {
+            showStep(step1, 'Getting Started');
+        });
+    }
 
     // File Upload Preview
     const fileInput = document.getElementById('screenshot');
@@ -97,10 +103,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 btn.textContent = dayName + ', ' + month + ' ' + day;
                 btn.dataset.date = currentDate.toISOString();
+                btn.setAttribute('aria-pressed', 'false'); // Accessibility
                 
                 btn.addEventListener('click', function() {
-                    document.querySelectorAll('.date-btn').forEach(b => b.classList.remove('selected'));
+                    document.querySelectorAll('.date-btn').forEach(b => {
+                        b.classList.remove('selected');
+                        b.setAttribute('aria-pressed', 'false');
+                    });
                     this.classList.add('selected');
+                    this.setAttribute('aria-pressed', 'true');
                     if (selectedDateInput) selectedDateInput.value = this.dataset.date;
                     if (dateError) dateError.style.display = 'none';
                 });
@@ -129,7 +140,56 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             
             const submitBtn = this.querySelector('.btn-submit');
+            if (!submitBtn) return;
             const originalText = submitBtn.textContent;
+
+            // Date validation (P0: prevent silent fail if hidden field is empty)
+            const selectedDateBtn = this.querySelector('.date-btn.selected');
+            if (!selectedDateBtn) {
+                const dateError = document.getElementById('date-error');
+                if (dateError) dateError.style.display = 'block';
+                return; // Stop submission
+            }
+
+            // Remove previous error if any
+            const prevErr = discoveryForm.querySelector('.form-submit-error');
+            if (prevErr) prevErr.remove();
+
+            // P0: Safe File Upload Handling
+            const formFileInput = this.querySelector('input[type="file"]');
+            let fileData = null;
+            let fileName = null;
+            let fileType = null;
+
+            if (formFileInput && formFileInput.files.length > 0) {
+                const file = formFileInput.files[0];
+                const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+                const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'application/pdf'];
+                
+                if (!allowedTypes.includes(file.type)) {
+                    showError('Invalid file type. Please upload an image or PDF.');
+                    return;
+                }
+
+                if (file.size > MAX_FILE_SIZE) {
+                    showError('File is too large. Maximum size is 5MB.');
+                    return;
+                }
+
+                fileName = file.name;
+                fileType = file.type;
+                const reader = new FileReader();
+                try {
+                    fileData = await new Promise((resolve, reject) => {
+                        reader.onload = (e) => resolve(e.target.result.split(',')[1]);
+                        reader.onerror = () => reject(new Error('File reading failed'));
+                        reader.readAsDataURL(file);
+                    });
+                } catch (e) {
+                    showError('Error reading file. Please try again.');
+                    return;
+                }
+            }
 
             // Loading state
             submitBtn.textContent = 'Submitting...';
@@ -140,9 +200,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const salesRangeSelect = document.getElementById('sales-range');
             const adSpendSelect = document.getElementById('ad-spend-range');
             const formData = new FormData(this);
-            const formFileInput = this.querySelector('input[type="file"]');
-
-            const selectedDateBtn = this.querySelector('.date-btn.selected');
 
             const payload = {
                 salesRange: salesRangeSelect ? salesRangeSelect.options[salesRangeSelect.selectedIndex].text : '',
@@ -155,10 +212,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 instagram: formData.get('instagram') || '',
                 goals: formData.get('goals') || '',
                 extra: formData.get('extra') || '',
-                meetingTime: selectedDateBtn ? selectedDateBtn.textContent : 'Not Selected',
-                fileData: null,
-                fileName: null,
-                fileType: null
+                meetingTime: selectedDateBtn.textContent,
+                fileData: fileData,
+                fileName: fileName,
+                fileType: fileType
             };
 
             const successHTML = '<div style="text-align:center;padding:3rem 1rem;">'
@@ -167,45 +224,36 @@ document.addEventListener('DOMContentLoaded', () => {
                 + '<p style="color:#aaa;font-size:1.1rem;line-height:1.6;">Our team will review your details and reach out within 24-48 hours via email or WhatsApp to schedule your Discovery Call.</p>'
                 + '</div>';
 
-            const sendData = async (finalPayload) => {
-                try {
-                    await fetch(GOOGLE_SCRIPT_URL, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                        body: JSON.stringify(finalPayload)
-                    });
-                    discoveryForm.innerHTML = successHTML;
-                    const nextStepsBox = document.querySelector('.next-steps-box');
-                    if (nextStepsBox) nextStepsBox.style.display = 'none';
-                } catch (error) {
-                    // Remove previous error if any
-                    const prevErr = discoveryForm.querySelector('.form-submit-error');
-                    if (prevErr) prevErr.remove();
-                    // Show inline styled error
-                    const errDiv = document.createElement('div');
-                    errDiv.className = 'form-submit-error';
-                    errDiv.style.cssText = 'background:rgba(230,25,25,0.08);border:1px solid rgba(230,25,25,0.3);color:#ff6b6b;padding:1rem 1.25rem;border-radius:8px;margin-top:1rem;font-size:0.9rem;line-height:1.5;';
-                    errDiv.textContent = 'Something went wrong. Please try again or contact us at performax.one1@gmail.com';
-                    discoveryForm.appendChild(errDiv);
+            function showError(message) {
+                const errDiv = document.createElement('div');
+                errDiv.className = 'form-submit-error';
+                errDiv.style.cssText = 'background:rgba(230,25,25,0.08);border:1px solid rgba(230,25,25,0.3);color:#ff6b6b;padding:1rem 1.25rem;border-radius:8px;margin-top:1rem;font-size:0.9rem;line-height:1.5;';
+                errDiv.textContent = message;
+                discoveryForm.appendChild(errDiv);
+                
+                if (submitBtn) {
                     submitBtn.textContent = originalText;
                     submitBtn.disabled = false;
                     submitBtn.style.opacity = '1';
                 }
-            };
+            }
 
-            // Handle optional file upload
-            if (formFileInput && formFileInput.files.length > 0) {
-                const file = formFileInput.files[0];
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    payload.fileData = event.target.result.split(',')[1];
-                    payload.fileName = file.name;
-                    payload.fileType = file.type;
-                    sendData(payload);
-                };
-                reader.readAsDataURL(file);
-            } else {
-                sendData(payload);
+            try {
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify(payload)
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`Server returned status: ${response.status}`);
+                }
+                
+                discoveryForm.innerHTML = successHTML;
+                const nextStepsBox = document.querySelector('.next-steps-box');
+                if (nextStepsBox) nextStepsBox.style.display = 'none';
+            } catch (error) {
+                showError('Something went wrong. Please try again or contact us at performax.one1@gmail.com');
             }
         });
     }

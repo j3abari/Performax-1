@@ -7,6 +7,7 @@
     <title>Performax1 | Getting Started</title>
     <meta name="description"
         content="Apply to work with Performax1. Tell us about your brand and book a free discovery call with our team.">
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
@@ -14,10 +15,10 @@
 
     <link rel="stylesheet" href="assets/css/global.css">
     <link rel="stylesheet" href="assets/css/getting-started.css">
-    <link rel="icon" type="image/png" href="images/-2.png">
 </head>
 
-<body class="funnel-body">
+<body>
+    <!-- Minimal Header -->
     <header class="funnel-header">
         <a href="index.html"><img src="images/logo.png" class="theme-logo dark-logo" alt="Performax1"
                 style="height: 50px; width: auto; object-fit: contain;"><img src="images/logo-light.png"
@@ -34,7 +35,7 @@
 
             <div class="qualification-statement">
                 Hey! My brand generated
-                <select id="sales-range">
+                <select id="sales-range" aria-label="Sales Range">
                     <option value="" disabled selected>Select Range</option>
                     <option value="below-600k">Below 600K</option>
                     <option value="600k-1m">600K to 1M</option>
@@ -43,7 +44,7 @@
                     <option value="above-5m">Above 5M</option>
                 </select>
                 in sales in the past month, and we spent
-                <select id="ad-spend-range">
+                <select id="ad-spend-range" aria-label="Ad Spend Range">
                     <option value="" disabled selected>Select Range</option>
                     <option value="organic">I sell only organically</option>
                     <option value="0-50k">0 to 50K</option>
@@ -63,8 +64,8 @@
 
         <!-- Step 2: Not Qualified -->
         <div id="step-unqualified" class="funnel-step">
-            <h1>Unfortunately you won't be a good fit for us at your current stage,</h1>
-            <p>however we can still help you out through a consultation.</p>
+            <h1>Unfortunately, you won't be a good fit for us at your current stage.</h1>
+            <p>However, we can still help you out through a consultation.</p>
 
             <div class="funnel-actions">
                 <button class="btn-prev" id="btn-prev-unqualified">PREV STEP</button>
@@ -75,16 +76,16 @@
 
         <!-- Step 3: Discovery Call Form -->
         <div id="step-3" class="funnel-step">
-            <h2>You're Just One Step Away From Becoming The Next Big Brand In Your Market.</h2>
+            <h1>You're Just One Step Away From Becoming The Next Big Brand In Your Market.</h1>
 
             <form id="discovery-form">
-                <div class="form-group row-radio">
-                    <label>Have you watched the video about our process? *</label>
+                <fieldset class="form-group row-radio" style="border:none; padding:0; margin-bottom:1.5rem;">
+                    <legend style="margin-bottom:0.5rem; font-weight:500;">Have you watched the video about our process? *</legend>
                     <div class="radio-group">
                         <label><input type="radio" name="watched_video" value="yes" required> Yes</label>
                         <label><input type="radio" name="watched_video" value="no" required> No</label>
                     </div>
-                </div>
+                </fieldset>
 
                 <div class="form-row">
                     <div class="form-group">
@@ -98,12 +99,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Email Address *</label>
+                    <label for="email">Work Email *</label>
                     <input type="email" id="email" name="email" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="role">Are you the owner? If not, specify your role *</label>
+                    <label for="role">Role in the company *</label>
                     <input type="text" id="role" name="role" required>
                 </div>
 
@@ -118,11 +119,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Upload Sales Screenshot *</label>
+                    <label for="screenshot">Upload Sales Screenshot *</label>
                     <div class="file-drop-area" id="file-drop-area">
                         <p>Drag & drop image here, or click to select</p>
-                        <p class="file-info">(Images only, max 10MB)</p>
-                        <input type="file" id="screenshot" name="screenshot" accept="image/*" required>
+                        <p class="file-info">(Images only, max 5MB)</p>
+                        <input type="file" id="screenshot" name="screenshot" accept="image/jpeg,image/png,image/webp,application/pdf" required>
                     </div>
                     <div id="file-name-preview"></div>
                 </div>
@@ -133,8 +134,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label>📅 Pick a Meeting Time *</label>
-                    <div class="date-picker-grid" id="date-picker-grid">
+                    <label id="date-picker-label">📅 Pick a Meeting Time *</label>
+                    <div class="date-picker-grid" id="date-picker-grid" role="group" aria-labelledby="date-picker-label">
                         <!-- Dates will be generated by JS -->
                     </div>
                     <input type="hidden" id="selected-date" name="selected_date" required>

@@ -1,4 +1,4 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     initParallax();
 });
 
@@ -15,9 +15,9 @@ function initParallax() {
         if (scrolled < heroHeight) {
             floatingElements.forEach(el => {
                 const speed = parseFloat(el.dataset.speed) || 0.05;
-                const yPos = scrolled * speed;
-                const rotation = scrolled * speed * 0.5;
-                el.style.transform = `translateY(${yPos}px) rotate(${rotation}deg)`;
+                el._scrollY = scrolled * speed;
+                el._scrollR = scrolled * speed * 0.5;
+                updateTransform(el);
             });
         }
     }, { passive: true });
@@ -30,10 +30,17 @@ function initParallax() {
 
             floatingElements.forEach(el => {
                 const speed = parseFloat(el.dataset.speed) || 0.05;
-                const x = mouseX * 50 * speed;
-                const y = mouseY * 50 * speed;
-                el.style.transform = `translate(${x}px, ${y}px)`;
+                el._mouseX = mouseX * 50 * speed;
+                el._mouseY = mouseY * 50 * speed;
+                updateTransform(el);
             });
         }, { passive: true });
+    }
+
+    function updateTransform(el) {
+        const sx = el._mouseX || 0;
+        const sy = (el._scrollY || 0) + (el._mouseY || 0);
+        const sr = el._scrollR || 0;
+        el.style.transform = `translate(${sx}px, ${sy}px) rotate(${sr}deg)`;
     }
 }
