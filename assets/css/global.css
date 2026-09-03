@@ -93,3 +93,11 @@
     font-weight: 800;
     font-size: 1.05em;
 }
+
+
+/* Mobile Fixes added via Script */
+@media (max-width: 768px) {
+    .founder-card { padding: 30px 20px !important; margin: 0 auto !important; max-width: 100% !important; overflow: hidden !important; }
+    .press-logos { gap: 20px !important; padding: 0 15px !important; }
+    .founder-name { text-align: left !important; }
+}

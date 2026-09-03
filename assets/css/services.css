@@ -382,7 +382,7 @@
 
         .service-detail-card:hover {
             transform: translateY(-4px);
-            border-color: rgba(16, 185, 129, 0.15);
+            border-color: rgba(230, 25, 25, 0.15);
             box-shadow: 0 25px 50px rgba(0,0,0,0.4);
         }
 
@@ -394,7 +394,7 @@
             width: 52px;
             height: 52px;
             background: linear-gradient(135deg, var(--green-subtle) 0%, transparent 100%);
-            border: 1px solid rgba(16, 185, 129, 0.2);
+            border: 1px solid rgba(230, 25, 25, 0.2);
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
@@ -456,7 +456,7 @@
 
         .who-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(16, 185, 129, 0.2);
+            border-color: rgba(230, 25, 25, 0.2);
             box-shadow: 0 30px 60px rgba(0,0,0,0.5);
         }
 
@@ -650,7 +650,7 @@
 
         .pricing-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(16, 185, 129, 0.2);
+            border-color: rgba(230, 25, 25, 0.2);
             box-shadow: 0 30px 70px rgba(0,0,0,0.5);
         }
 
@@ -847,7 +847,7 @@
             position: fixed;
             width: 400px;
             height: 400px;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.06) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(230, 25, 25, 0.06) 0%, transparent 70%);
             pointer-events: none;
             z-index: 0;
             transform: translate(-50%, -50%);
