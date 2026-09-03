@@ -130,12 +130,9 @@
                 <!-- Contact Form -->
                 <div class="contact-form-wrapper reveal">
                     <h2 class="form-title">Send Us a Message</h2>
-                    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+                    <form id="contactForm"
                         class="contact-form">
-                        <input type="hidden" name="form-name" value="contact">
-                        <div class="form-honeypot">
-                            <input name="bot-field">
-                        </div>
+                        
 
                         <div class="form-group">
                             <label for="name" class="form-label">Full Name *</label>
@@ -190,7 +187,8 @@
                             </select>
                         </div>
 
-                        <button type="submit" class="btn-submit" style="color: #ffffff !important;">
+                        <div id="statusMessage" class="status-message" style="margin-bottom: 1rem; padding: 12px; border-radius: 8px; text-align: center; font-weight: 600; display: none;"></div>
+                        <button type="submit" id="submitBtn" class="btn-submit" style="color: #ffffff !important;">
                             Send Message
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd"
