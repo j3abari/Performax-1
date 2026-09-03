@@ -316,7 +316,7 @@
 
         .form-input::placeholder,
         .form-textarea::placeholder {
-            color: var(--color-primary); /* Red icons */
+            color: var(--text-muted);
         }
 
         .form-input:focus,
