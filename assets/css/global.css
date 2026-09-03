@@ -105,7 +105,7 @@
 /* ========================================================= */
 /* LIQUID GLASS STYLE OVERRIDES (GLASSMORPHISM + RED GLOW)   */
 /* ========================================================= */
-.case-card, .detail-card, .founder-card, .info-card, .pricing-card, 
+.case-card, .detail-card, .contact-card, .founder-card, .info-card, .pricing-card, 
 .process-card, .service-card, .service-detail-card, .testimonial-card, 
 .value-card, .who-card {
     background: rgba(255, 255, 255, 0.02) !important;
