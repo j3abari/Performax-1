@@ -416,3 +416,28 @@ html, body {
         padding: 0 16px !important;
     }
 }
+
+/* Cards Mobile Spacing Fixes */
+@media (max-width: 768px) {
+    /* Ensure cards have breathing room and don't touch screen edges */
+    .info-card, .founder-card {
+        padding: 24px 20px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        margin: 0 auto 16px auto !important;
+        max-width: calc(100vw - 32px) !important;
+    }
+    
+    .contact-form-wrapper {
+        max-width: calc(100vw - 32px) !important;
+        margin: 0 auto !important;
+    }
+    
+    /* Make the grids single column with proper gaps */
+    .contact-info, .founders-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 16px !important;
+        width: 100% !important;
+    }
+}
