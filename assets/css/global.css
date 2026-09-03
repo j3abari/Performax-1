@@ -153,6 +153,8 @@
     
     --black-medium: #ffffff;
     --black: #f8fafc;
+    --black-light: #ffffff;
+    --black-soft: #f1f5f9;
     --white: #0f172a; /* Invert explicit whites */
 }
 
@@ -161,7 +163,7 @@
 [data-theme="light"] #theme-toggle .moon-icon { display: none !important; }
 
 /* Light Theme Navbar */
-[data-theme="light"] .navbar {
+[data-theme="light"] #navbar {
     background: rgba(255, 255, 255, 0.8) !important;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
 }
