@@ -67,7 +67,7 @@
 
         <h2>5. Contact Us</h2>
         <p>If you have questions or comments about this Privacy Policy, or if you would like us to delete your data from our systems, please contact us at:</p>
-        <p><strong>Email:</strong> performax.one1@gmail.com</p>
+        <p><strong>Email:</strong> <a href="mailto:performax.one1@gmail.com" style="color: var(--color-primary); font-weight: bold; text-decoration: none; padding: 4px 8px; background: rgba(230, 25, 25, 0.1); border-radius: 4px;">performax.one1@gmail.com</a></p>
     </div>
 
     <!-- Theme Script -->
@@ -86,6 +86,26 @@
                 localStorage.setItem('theme', 'light');
             }
         });
+    </script>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" aria-label="Scroll to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </button>
+    <script>
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        if (scrollToTopBtn) {
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.classList.add('visible');
+                } else {
+                    scrollToTopBtn.classList.remove('visible');
+                }
+            });
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
     </script>
 </body>
 </html>
