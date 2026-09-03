@@ -65,6 +65,13 @@
 </head>
 
 <body>
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Cursor Glow Effect -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
     <nav id="navbar"
         style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(10,10,10,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 0.8rem 0; transition: all 0.3s ease;">
         <div class="container nav-content"
@@ -73,32 +80,39 @@
                     style="height: 50px; width: auto; object-fit: contain;"><img src="images/logo-light.png"
                     class="theme-logo light-logo" alt="Performax1"
                     style="height: 50px; width: auto; object-fit: contain;"></a>
-            <div style="display: flex; align-items: center;">
-                <button id="theme-toggle" aria-label="Toggle Theme"
-                    style="background: none; border: none; cursor: pointer; padding: 8px; color: var(--text-primary); display: flex; align-items: center; justify-content: center; margin-right: 15px; transition: color 0.3s;">
-                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" style="display: none;">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                </button>
-                <a href="getting-started.html" class="nav-cta"
-                    style="color: #ffffff !important; padding: 12px 28px; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px;">
-                    Scale Your Brand &rarr;
-                </a>
+            <div style="display: flex; align-items: center; gap: 2rem;">
+                <ul style="display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0;">
+                    <li><a href="about.html" style="color: var(--text-secondary); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.3s;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">About</a></li>
+                    <li><a href="services.html" style="color: var(--text-secondary); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.3s;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Services</a></li>
+                    <li><a href="contact.html" style="color: var(--text-secondary); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.3s;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Contact</a></li>
+                </ul>
+                <div style="display: flex; align-items: center;">
+                    <button id="theme-toggle" aria-label="Toggle Theme"
+                        style="background: none; border: none; cursor: pointer; padding: 8px; color: var(--text-primary); display: flex; align-items: center; justify-content: center; margin-right: 15px; transition: color 0.3s;">
+                        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" style="display: none;">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+                    <a href="getting-started.html" class="nav-cta"
+                        style="color: #ffffff !important; padding: 12px 28px; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px;">
+                        Scale Your Brand &rarr;
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
@@ -182,10 +196,11 @@
                     onmouseover="this.style.color='var(--color-primary)'"
                     onmouseout="this.style.color='var(--text-secondary)'">Get Started</a>
                 <a href="contact.html"
-                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; transition: 0.3s;"
+                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: 0.3s;"
                     onmouseover="this.style.color='var(--color-primary)'"
-                    onmouseout="this.style.color='var(--text-secondary)'">Contact Us</a> <a href="privacy.html"
-                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; transition: 0.3s;"
+                    onmouseout="this.style.color='var(--text-secondary)'">Contact Us</a>
+                <a href="privacy.html"
+                    style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: 0.3s;"
                     onmouseover="this.style.color='var(--color-primary)'"
                     onmouseout="this.style.color='var(--text-secondary)'">Privacy</a>
             </div>
