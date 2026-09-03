@@ -1,4 +1,11 @@
-﻿html { scroll-behavior: smooth; }
+﻿
+/* Global Font Fix (Ensures privacy.html and others don't fall back to default serif) */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+html { scroll-behavior: smooth; }
 /* Performax 1 - Global Design Tokens */
 :root {
     /* Core Brand Colors */
@@ -441,3 +448,4 @@ html, body {
         width: 100% !important;
     }
 }
+
