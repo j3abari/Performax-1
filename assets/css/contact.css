@@ -739,6 +739,11 @@
             transform: translateX(4px);
         }
 
+                .cta-note strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
         .cta-note {
             margin-top: 24px;
             font-size: 0.9rem;
