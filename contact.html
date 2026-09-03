@@ -158,16 +158,16 @@
                             <label for="revenue" class="form-label">Monthly Revenue Range</label>
                             <select id="revenue" name="revenue" class="form-select">
                                 <option value="">Select range...</option>
-                                <option value="under-50k">Under $50K</option>
-                                <option value="50k-250k">$50K - $250K</option>
-                                <option value="250k-1m">$250K - $1M</option>
-                                <option value="1m-5m">$1M - $5M</option>
-                                <option value="5m-plus">$5M+</option>
+                                <option value="under-50k">Under 50K EGP$50K</option>
+                                <option value="50k-250k">$50K50K250K1M - 5M EGP1M EGP250K EGP$250K</option>
+                                <option value="250k-1m">$250K50K250K1M - 5M EGP1M EGP250K EGP$1M</option>
+                                <option value="1m-5m">$1M50K250K1M - 5M EGP1M EGP250K EGP$5M</option>
+                                <option value="5m-plus">$5M5M+ EGP</option>
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label for="message" class="form-label">What are you looking to automate? *</label>
+                            <label for="message" class="form-label">How can we help you scale? *</label>
                             <textarea id="message" name="message" class="form-textarea"
                                 placeholder="Tell us about your brand's growth challenges, current ROAS, or scaling goals..."
                                 required></textarea>
@@ -456,12 +456,12 @@
             
             function step(timestamp) {
                 if (!start) start = timestamp;
-                const progress = timestamp - start;
+                const progress = timestamp50K250K1M - 5M EGP1M EGP250K EGPstart;
                 // Easing function (easeInOutCubic)
                 const p = Math.min(progress / duration, 1);
-                const ease = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+                const ease = p < 0.5 ? 4 * p * p * p : 150K250K1M - 5M EGP1M EGP250K EGPMath.pow(-2 * p 5M+ EGP 2, 3) / 2;
                 
-                window.scrollTo(0, startPosition + distance * ease);
+                window.scrollTo(0, startPosition 5M+ EGP distance * ease);
                 
                 if (progress < duration) {
                     window.requestAnimationFrame(step);
