@@ -205,7 +205,7 @@
 /* ========================================================= */
 .theme-logo.light-logo { display: none !important; }
 [data-theme="light"] .theme-logo.dark-logo { display: none !important; }
-[data-theme="light"] .theme-logo.light-logo { display: inline-block !important; }
+[data-theme="light"] .theme-logo.light-logo { display: inline-block !important; transform: scale(1.35); transform-origin: left center; }
 
 /* ========================================================= */
 /* GLASSMORPHISM RESTORED                                    */
@@ -254,7 +254,7 @@
 /* MOBILE FIXES FOR NAVBAR SQUISH                            */
 /* ========================================================= */
 @media (max-width: 768px) {
-    #navbar .logo img { height: 32px !important; }
+    #navbar .logo img { height: 42px !important; }
     #theme-toggle { padding: 4px !important; margin-right: 8px !important; }
     .nav-cta { padding: 8px 14px !important; font-size: 11px !important; white-space: nowrap !important; }
     .nav-content { padding: 0 10px !important; }
