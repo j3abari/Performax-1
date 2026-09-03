@@ -391,3 +391,28 @@
         align-items: flex-start !important;
     }
 }
+
+/* Universal Mobile Overflow Fixes */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+}
+
+/* Contact Page Mobile Form Constraints Fixes */
+@media (max-width: 768px) {
+    .contact-form-wrapper {
+        padding: 24px 20px !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        box-sizing: border-box !important;
+    }
+    
+    .contact-grid {
+        gap: 32px !important;
+    }
+    
+    .container {
+        padding: 0 16px !important;
+    }
+}
