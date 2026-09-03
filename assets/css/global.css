@@ -123,7 +123,7 @@
 .case-card:hover, .detail-card:hover, .founder-card:hover, .info-card:hover, 
 .pricing-card:hover, .process-card:hover, .service-card:hover, 
 .service-detail-card:hover, .testimonial-card:hover, .value-card:hover, 
-.who-card:hover, .contact-card:hover, .story-image:hover {
+.who-card:hover, .contact-card:hover, .story-image:hover, .phase-card:hover {
     transform: translateY(-6px) !important;
     border-color: rgba(230, 25, 25, 0.4) !important;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 35px rgba(230, 25, 25, 0.18) !important;
@@ -172,7 +172,7 @@
 [data-theme="light"] .pricing-card, [data-theme="light"] .process-card, 
 [data-theme="light"] .service-card, [data-theme="light"] .service-detail-card, 
 [data-theme="light"] .testimonial-card, [data-theme="light"] .value-card, 
-[data-theme="light"] .who-card, [data-theme="light"] .contact-card, [data-theme="light"] .story-image {
+[data-theme="light"] .who-card, [data-theme="light"] .contact-card, [data-theme="light"] .story-image, [data-theme="light"] .phase-card {
     background: #ffffff !important;
     border: 1px solid rgba(0, 0, 0, 0.08) !important;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
@@ -184,7 +184,7 @@
 [data-theme="light"] .pricing-card:hover, [data-theme="light"] .process-card:hover, 
 [data-theme="light"] .service-card:hover, [data-theme="light"] .service-detail-card:hover, 
 [data-theme="light"] .testimonial-card:hover, [data-theme="light"] .value-card:hover, 
-[data-theme="light"] .who-card:hover, [data-theme="light"] .contact-card:hover, .story-image:hover {
+[data-theme="light"] .who-card:hover, [data-theme="light"] .contact-card:hover, .story-image:hover, .phase-card:hover {
     border-color: rgba(230, 25, 25, 0.4) !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 0 0 20px rgba(230, 25, 25, 0.15) !important;
 }
