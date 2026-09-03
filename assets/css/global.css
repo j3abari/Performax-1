@@ -1,4 +1,4 @@
-html { scroll-behavior: smooth; }
+﻿html { scroll-behavior: smooth; }
 /* Performax 1 - Global Design Tokens */
 :root {
     /* Core Brand Colors */
@@ -195,7 +195,7 @@ html { scroll-behavior: smooth; }
 /* General overrides for text on white */
 [data-theme="light"] .section-subtitle, 
 [data-theme="light"] .founder-bio, 
-[data-theme="light"] p {
+[data-theme="light"] p:not(.founder-title):not(.brand-text) {
     color: var(--text-secondary) !important;
 }
 
@@ -322,3 +322,4 @@ html { scroll-behavior: smooth; }
     transform: translateY(-2px);
     box-shadow: 0 0 50px var(--green-glow);
 }
+
