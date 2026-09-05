@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performax1 for Clinics | تسويق أداء للعيادات والمراكز الطبية</title>
+    <meta name="description" content="إعلانات ممولة متخصصة للعيادات ومراكز التجميل — نتيجتها مواعيد محجوزة، مش مجرد نقرات. استشارة مجانية مع Performax1.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Cairo', 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            direction: rtl;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── NAVBAR ─── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(10,10,10,0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 0.8rem 0;
+        }
+        .nav-inner {
+            max-width: 1200px; margin: 0 auto; padding: 0 20px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-brand {
+            display: flex; align-items: center; gap: 12px; text-decoration: none;
+        }
+        .nav-brand img { height: 38px; width: auto; object-fit: contain; }
+        .nav-badge {
+            background: rgba(230,25,25,0.12);
+            border: 1px solid rgba(230,25,25,0.3);
+            color: var(--color-primary);
+            font-size: 0.7rem; font-weight: 700;
+            padding: 3px 10px; border-radius: 20px;
+            letter-spacing: 1px; text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .nav-cta-clinics {
+            background: var(--color-primary);
+            color: #fff !important;
+            padding: 10px 22px; border-radius: 8px;
+            font-weight: 700; font-size: 0.85rem;
+            text-decoration: none; white-space: nowrap;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .nav-cta-clinics:hover { background: var(--color-primary-hover); transform: translateY(-1px); }
+
+        /* ─── HERO ─── */
+        .hero-clinics {
+            min-height: 100vh;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+            background: radial-gradient(ellipse at top center, rgba(230,25,25,0.08) 0%, var(--bg-primary) 60%);
+            position: relative; overflow: hidden;
+        }
+        .hero-clinics::before {
+            content: '';
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none; z-index: 0;
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 780px; }
+        .eyebrow-tag {
+            display: inline-block;
+            border: 1px solid var(--color-primary);
+            background: rgba(230,25,25,0.07);
+            color: var(--color-primary);
+            font-weight: 700; font-size: 0.78rem;
+            padding: 7px 20px; border-radius: 50px;
+            letter-spacing: 1.5px; text-transform: uppercase;
+            margin-bottom: 1.8rem;
+        }
+        .hero-clinics h1 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 800; line-height: 1.2;
+            margin-bottom: 1.2rem; color: var(--text-primary);
+        }
+        .hero-clinics h1 span { color: var(--color-primary); }
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.2vw, 1.15rem);
+            color: var(--text-secondary); line-height: 1.8;
+            max-width: 640px; margin: 0 auto 2.5rem;
+        }
+        .hero-cta-group {
+            display: flex; flex-wrap: wrap; gap: 1rem;
+            justify-content: center; align-items: center;
+        }
+        .btn-primary-clinics {
+            background: var(--color-primary); color: #fff !important;
+            padding: 16px 36px; border-radius: 10px;
+            font-weight: 800; font-size: 1.05rem;
+            text-decoration: none; transition: all 0.3s;
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn-primary-clinics:hover { background: var(--color-primary-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(230,25,25,0.35); }
+        .btn-secondary-clinics {
+            color: var(--text-secondary); font-size: 0.95rem;
+            text-decoration: none; font-weight: 500;
+            transition: color 0.3s;
+            display: inline-flex; align-items: center; gap: 6px;
+        }
+        .btn-secondary-clinics:hover { color: var(--text-primary); }
+        .trust-line {
+            margin-top: 1.8rem;
+            font-size: 0.82rem; color: var(--text-muted);
+            display: flex; align-items: center; justify-content: center; gap: 6px;
+        }
+        .trust-line::before { content: ''; display: block; width: 20px; height: 1px; background: var(--text-muted); }
+        .trust-line::after  { content: ''; display: block; width: 20px; height: 1px; background: var(--text-muted); }
+
+        /* ─── SECTION BASE ─── */
+        section { padding: 100px 20px; }
+        .container-md { max-width: 1100px; margin: 0 auto; }
+        .section-tag {
+            display: inline-block;
+            border: 1px solid var(--color-primary);
+            background: rgba(230,25,25,0.05);
+            color: var(--color-primary);
+            font-size: 0.75rem; font-weight: 700;
+            padding: 6px 18px; border-radius: 50px;
+            letter-spacing: 1.5px; text-transform: uppercase;
+            margin-bottom: 1.2rem;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 800; margin-bottom: 1rem;
+            color: var(--text-primary); line-height: 1.25;
+        }
+        .section-subtitle {
+            font-size: 1rem; color: var(--text-secondary);
+            line-height: 1.8; max-width: 620px;
+        }
+        .section-header-center { text-align: center; margin-bottom: 60px; }
+        .section-header-center .section-subtitle { margin: 0 auto; }
+
+        /* ─── PROBLEM SECTION ─── */
+        .section-problem { background: var(--bg-surface); }
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px; margin-top: 48px;
+        }
+        .pain-card {
+            background: var(--bg-primary);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 14px; padding: 28px 24px;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .pain-card:hover { border-color: rgba(230,25,25,0.2); transform: translateY(-3px); }
+        .pain-icon {
+            width: 44px; height: 44px;
+            background: rgba(230,25,25,0.08);
+            border: 1px solid rgba(230,25,25,0.15);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; margin-bottom: 16px;
+        }
+        .pain-card h3 { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+        .pain-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; }
+
+        /* ─── SOLUTION ─── */
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px; margin-top: 48px;
+        }
+        .solution-card {
+            background: var(--bg-surface);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 14px; padding: 32px 28px;
+            position: relative; overflow: hidden; transition: all 0.3s;
+        }
+        .solution-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-primary-hover));
+        }
+        .solution-icon { font-size: 1.8rem; margin-bottom: 16px; }
+        .solution-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
+        .solution-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; }
+
+        /* ─── WHO IS THIS FOR ─── */
+        .who-section { background: var(--bg-surface); }
+        .who-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px; margin-top: 40px;
+        }
+        .who-item {
+            background: var(--bg-primary);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 10px; padding: 18px 20px;
+            display: flex; align-items: center; gap: 10px;
+            font-size: 0.9rem; font-weight: 600; transition: all 0.3s;
+        }
+        .who-item:hover { border-color: rgba(230,25,25,0.3); color: var(--color-primary); }
+        .dot { width: 8px; height: 8px; background: var(--color-primary); border-radius: 50%; flex-shrink: 0; }
+        .who-note { margin-top: 24px; font-size: 0.88rem; color: var(--text-muted); font-style: italic; }
+
+        /* ─── PROCESS ─── */
+        .steps-list { margin-top: 48px; display: flex; flex-direction: column; gap: 20px; }
+        .step-item {
+            display: flex; gap: 24px; align-items: flex-start;
+            background: var(--bg-surface);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 14px; padding: 28px; transition: border-color 0.3s;
+        }
+        .step-item:hover { border-color: rgba(230,25,25,0.2); }
+        .step-number {
+            width: 48px; height: 48px; flex-shrink: 0;
+            background: var(--color-primary); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; font-weight: 800; color: #fff;
+        }
+        .step-body h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+        .step-body p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; }
+
+        /* ─── RESULTS ─── */
+        .results-section { background: var(--bg-surface); }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px; margin-top: 48px;
+        }
+        .stat-card {
+            background: var(--bg-primary);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 14px; padding: 36px 28px;
+            text-align: center; transition: all 0.3s;
+        }
+        .stat-card:hover { border-color: rgba(230,25,25,0.2); transform: translateY(-3px); }
+        .stat-number { font-size: 2.8rem; font-weight: 800; color: var(--color-primary); margin-bottom: 8px; }
+        .stat-label { font-size: 0.9rem; color: var(--text-secondary); font-weight: 500; }
+        .placeholder-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-muted); font-size: 0.7rem;
+            padding: 2px 10px; border-radius: 20px; margin-top: 6px;
+        }
+        .testimonial-block {
+            margin-top: 48px;
+            background: var(--bg-primary);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-right: 3px solid var(--color-primary);
+            border-radius: 14px; padding: 36px;
+            font-style: italic; color: var(--text-secondary);
+            font-size: 1rem; line-height: 1.8;
+        }
+
+        /* ─── WHY US ─── */
+        .why-list { margin-top: 40px; display: flex; flex-direction: column; gap: 16px; }
+        .why-item {
+            display: flex; gap: 14px; align-items: flex-start;
+            padding: 20px 24px;
+            background: var(--bg-surface);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+        }
+        .why-check {
+            width: 24px; height: 24px; flex-shrink: 0;
+            background: rgba(230,25,25,0.1);
+            border: 1px solid rgba(230,25,25,0.25);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; margin-top: 2px;
+        }
+        .why-check svg { width: 12px; height: 12px; color: var(--color-primary); }
+        .why-item p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; }
+
+        /* ─── FAQ ─── */
+        .faq-section { background: var(--bg-surface); }
+        .faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 16px; }
+        .faq-item {
+            background: var(--bg-primary);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px; overflow: hidden;
+        }
+        .faq-question {
+            width: 100%; text-align: right;
+            background: none; border: none; cursor: pointer;
+            padding: 22px 24px;
+            display: flex; justify-content: space-between; align-items: center;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.95rem; font-weight: 700; color: var(--text-primary);
+        }
+        .faq-icon {
+            width: 24px; height: 24px; flex-shrink: 0;
+            background: rgba(230,25,25,0.08);
+            border: 1px solid rgba(230,25,25,0.2);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--color-primary); font-size: 1rem;
+            transition: transform 0.3s;
+        }
+        .faq-item.open .faq-icon { transform: rotate(45deg); }
+        .faq-answer {
+            max-height: 0; overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s;
+            padding: 0 24px;
+            font-size: 0.88rem; color: var(--text-secondary); line-height: 1.8;
+        }
+        .faq-item.open .faq-answer { max-height: 200px; padding-bottom: 22px; }
+
+        /* ─── FINAL CTA ─── */
+        .final-cta {
+            text-align: center; padding: 120px 20px;
+            background: radial-gradient(ellipse at center, rgba(230,25,25,0.08) 0%, var(--bg-primary) 65%);
+            position: relative; overflow: hidden;
+        }
+        .final-cta::before {
+            content: '';
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 50px 50px; pointer-events: none;
+        }
+        .final-cta-content { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+        .final-cta h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem; }
+        .final-cta p { color: var(--text-secondary); font-size: 1rem; line-height: 1.8; margin-bottom: 2rem; }
+        .micro-trust { margin-top: 1.2rem; font-size: 0.82rem; color: var(--text-muted); }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--bg-surface);
+            padding: 1.5rem 20px;
+            border-top: 1px solid var(--bg-surface-hover);
+        }
+        .footer-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; justify-content: space-between;
+            align-items: center; flex-wrap: wrap; gap: 1rem;
+        }
+        .footer-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .footer-brand img { height: 32px; width: auto; }
+        .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
+        .footer-copy a { color: var(--color-primary); text-decoration: none; }
+        .footer-back { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+        .footer-back:hover { color: var(--text-primary); }
+
+        /* ─── SCROLL TO TOP ─── */
+        #scrollToTopBtn {
+            position: fixed; bottom: 24px; left: 24px; z-index: 999;
+            width: 44px; height: 44px; border-radius: 50%;
+            background: var(--color-primary); color: #fff;
+            border: none; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; transform: translateY(10px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        #scrollToTopBtn.visible { opacity: 1; transform: translateY(0); }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            section { padding: 70px 16px; }
+            .hero-clinics { padding: 100px 16px 60px; }
+            .nav-badge { display: none; }
+            .step-item { flex-direction: column; gap: 14px; }
+            .hero-cta-group { flex-direction: column; }
+            .btn-primary-clinics { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="nav-inner">
+            <a href="clinics.html" class="nav-brand">
+                <img src="images/logo.png" class="theme-logo dark-logo" alt="Performax1">
+                <img src="images/logo-light.png" class="theme-logo light-logo" alt="Performax1">
+                <span class="nav-badge">for Clinics</span>
+            </a>
+            <a href="https://calendly.com/performax1/30min" target="_blank" rel="noopener" class="nav-cta-clinics">
+                احجز استشارة مجانية
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero-clinics">
+        <div class="hero-content">
+            <span class="eyebrow-tag">Performance Marketing for Clinics &amp; Medical Centers</span>
+            <h1>املأ جدول <span>مواعيدك</span>،<br>مش بس ميزانية إعلاناتك</h1>
+            <p class="hero-subtitle">
+                بنشغّل إعلانات ممولة للعيادات والمراكز الطبية ومراكز التجميل — مبنية على نتيجة واحدة:
+                مرضى فعليين بيحجزوا مواعيد، مش مجرد نقرات ومشاهدات.
+            </p>
+            <div class="hero-cta-group">
+                <a href="https://calendly.com/performax1/30min" target="_blank" rel="noopener" class="btn-primary-clinics">
+                    احجز استشارة مجانية
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#how-we-work" class="btn-secondary-clinics">
+                    شوف كيف بنشتغل
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+                </a>
+            </div>
+            <p class="trust-line">جزء من Performax1 — شريك موثوق للعلامات التجارية في مصر</p>
+        </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="section-problem">
+        <div class="container-md">
+            <div class="section-header-center">
+                <span class="section-tag">المشكلة</span>
+                <h2 class="section-title">عيادتك ممتازة. بس جدول المواعيد مش بيعكس ده</h2>
+                <p class="section-subtitle">لو حاسس بأي حاجة من دي، أنت مش لوحدك — وده بالظبط اللي بنحله:</p>
+            </div>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <div class="pain-icon">💸</div>
+                    <h3>إعلانات بتاخد فلوس من غير حجوزات حقيقية</h3>
+                    <p>بتصرف على Meta أو Google، بتجيب لايكات ومشاهدات، لكن التليفون مش بيرن بمرضى فعليين.</p>
+                </div>
+                <div class="pain-card">
+                    <div class="pain-icon">📵</div>
+                    <h3>متابعة العملاء المحتملين بتضيع</h3>
+                    <p>حد بيسأل عن سعر أو موعد، وبعدين بيختفي — مفيش سيستم بيتابعه ويرجّعه يحجز.</p>
+                </div>
+                <div class="pain-card">
+                    <div class="pain-icon">📅</div>
+                    <h3>مواعيد فاضية في أيام معينة</h3>
+                    <p>عندك طاقة استيعابية أكتر من اللي بتستغلها، والوقت الفاضي ده بيتحول لخسارة مباشرة.</p>
+                </div>
+                <div class="pain-card">
+                    <div class="pain-icon">📊</div>
+                    <h3>مش عارف الإعلانات فعلاً بتجيب كام مريض</h3>
+                    <p>بتصرف فلوس على تسويق بس مفيش رقم واضح يقولك العائد الحقيقي على كل جنيه.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUTION -->
+    <section>
+        <div class="container-md">
+            <div class="section-header-center">
+                <span class="section-tag">الحل</span>
+                <h2 class="section-title">احنا مش بنبيعلك "إعلانات"<br>بنبيعلك مواعيد محجوزة</h2>
+                <p class="section-subtitle">فريقنا متخصص في التسويق للخدمات — لأن رحلة المريض مختلفة تمامًا عن رحلة المتسوق.</p>
+            </div>
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="solution-icon">🎯</div>
+                    <h3>استهداف دقيق للمنطقة والاحتياج</h3>
+                    <p>مش بنستهدف "كل الناس" — بنوصلك للناس اللي فعلًا محتاجة خدمتك في نطاقك الجغرافي، في التوقيت المناسب.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">📞</div>
+                    <h3>متابعة كل عميل محتمل</h3>
+                    <p>مش بنسيبك تخسر أي استفسار. بنساعدك تبني سيستم متابعة يحول أكبر عدد ممكن من الاستفسارات لحجوزات فعلية.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">📈</div>
+                    <h3>تقارير بلغة تفهمها</h3>
+                    <p>مش هتشوف "Impressions" و"Reach" بس. هتشوف: كام موعد جالك، بكام تكلفة، ومن أنهي إعلان بالظبط.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHO IS THIS FOR -->
+    <section class="who-section">
+        <div class="container-md">
+            <div class="section-header-center">
+                <span class="section-tag">مناسب لـ</span>
+                <h2 class="section-title">مناسب لو أنت صاحب:</h2>
+            </div>
+            <div class="who-grid">
+                <div class="who-item"><span class="dot"></span> عيادة أسنان</div>
+                <div class="who-item"><span class="dot"></span> عيادة تخسيس وتغذية</div>
+                <div class="who-item"><span class="dot"></span> مركز تجميل وليزر</div>
+                <div class="who-item"><span class="dot"></span> عيادة جلدية</div>
+                <div class="who-item"><span class="dot"></span> مركز علاج طبيعي</div>
+                <div class="who-item"><span class="dot"></span> عيادة نسا وتوليد</div>
+                <div class="who-item"><span class="dot"></span> مركز طبي متعدد التخصصات</div>
+                <div class="who-item"><span class="dot"></span> أي نشاط بيعتمد على حجز مواعيد</div>
+            </div>
+            <p class="who-note">لو نشاطك مش موجود في القائمة، ابعتلنا رسالة — غالبًا هنقدر نساعدك برضو.</p>
+        </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="how-we-work">
+        <div class="container-md">
+            <div class="section-header-center">
+                <span class="section-tag">الطريقة</span>
+                <h2 class="section-title">من أول مكالمة لحد أول موعد محجوز</h2>
+            </div>
+            <div class="steps-list">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-body">
+                        <h3>استشارة مجانية (15–20 دقيقة)</h3>
+                        <p>بنفهم نشاطك، منطقتك، منافسينك، والهدف اللي عايز توصله — من غير أي التزام.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-body">
+                        <h3>خطة مخصصة لعيادتك</h3>
+                        <p>مش قالب جاهز. بنبني خطة إعلانية مبنية على نوع خدماتك، الميزانية المتاحة، وأهدافك في العدد المستهدف من المرضى شهريًا.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-body">
+                        <h3>إطلاق الحملات ومتابعة يومية</h3>
+                        <p>بنشغّل الإعلانات على المنصات المناسبة (Meta / Google حسب الحالة)، وبنراقب الأداء يوم بيوم مش شهر بشهر.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-body">
+                        <h3>سيستم متابعة العملاء المحتملين</h3>
+                        <p>بنساعدك تنظم عملية الرد والمتابعة على أي استفسار — سواء عن طريق فريقك أو أدوات بسيطة بنجهزها لك.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">5</div>
+                    <div class="step-body">
+                        <h3>تقرير شهري + تحسين مستمر</h3>
+                        <p>كل شهر بتاخد تقرير واضح: عدد الاستفسارات، عدد المواعيد المحجوزة، وتكلفة كل موعد — وبنضبط الخطة على أساسه.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="results-section">
+        <div class="container-md">
+            <div class="section-header-center">
+                <span class="section-tag">النتائج</span>
+                <h2 class="section-title">أرقام حقيقية، مش وعود</h2>
+                <p class="section-subtitle">هتتحدث بأرقام فعلية بمجرد توفر بيانات أول عملاء القطاع.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">+XX%</div>
+                    <div class="stat-label">زيادة في عدد المواعيد المحجوزة شهريًا</div>
+                    <span class="placeholder-badge">قريبًا</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">XX جنيه</div>
+                    <div class="stat-label">متوسط تكلفة الموعد المحجوز</div>
+                    <span class="placeholder-badge">قريبًا</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">XX+</div>
+                    <div class="stat-label">عيادة ومركز نشتغل معاهم حاليًا</div>
+                    <span class="placeholder-badge">قريبًا</span>
+                </div>
+            </div>
+            <div class="testimonial-block">
+                "اقتباس من عميل حقيقي عن تجربته بعد التعاون — يُضاف بعد الحصول على أول عملاء في القطاع."
+                <br><br>
+                <strong style="color: var(--text-primary); font-style: normal;">— اسم الطبيب / صاحب المركز، اسم العيادة</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY US -->
+    <section>
+        <div class="container-md">
+            <div class="section-header-center">
+                <span class="section-tag">ليه Performax1</span>
+                <h2 class="section-title">ليه Performax1؟</h2>
+                <p class="section-subtitle">Performax1 شركة تسويق أداء متخصصة — قسم العيادات هو امتداد متخصص من نفس الخبرة، مبني خصيصًا حوالين احتياجات أصحاب العيادات والمراكز الطبية.</p>
+            </div>
+            <div class="why-list">
+                <div class="why-item">
+                    <div class="why-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <p>خبرة حقيقية في إدارة ميزانيات إعلانية على Meta وGoogle بنتائج قابلة للقياس.</p>
+                </div>
+                <div class="why-item">
+                    <div class="why-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <p>فهم عميق لسلوك المريض المصري وإزاي بيقرر يحجز — مش بنستخدم نفس أسلوب المتاجر الإلكترونية.</p>
+                </div>
+                <div class="why-item">
+                    <div class="why-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <p>نظام تسعير عادل ومناسب لطبيعة عملك — مش نسبة من كل حجز زي المتاجر الإلكترونية.</p>
+                </div>
+                <div class="why-item">
+                    <div class="why-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <p>تواصل مباشر وشفاف — مفيش تقارير معقدة أو مصطلحات تسويقية غامضة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container-md">
+            <div class="section-header-center">
+                <span class="section-tag">أسئلة شائعة</span>
+                <h2 class="section-title">أسئلة بتتكرر</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>هل الإعلانات هتشتغل فعلاً لعيادتي الصغيرة؟</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">أيوه — الإعلانات بتتظبط حسب حجمك وميزانيتك. أحيانًا العيادات الأصغر بتشوف نتيجة أسرع لأن المنافسة على منطقتها أقل.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>هل لازم أوقف التسويق التقليدي (لافتات، توصيات)؟</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">لا، الإعلانات الرقمية بتكمّل مصادر المرضى الحالية، مش بتلغيها. الهدف إننا نضيفلك قناة جديدة ومستقرة للحجوزات.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>قد إيه هياخد وقت لحد ما أشوف نتيجة؟</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">غالبًا بنشوف أول استفسارات جدية خلال أول 1–2 أسبوع من إطلاق الحملة، لكن الاستقرار والنتائج الأوضح بتظهر بعد أول شهر إلى شهرين.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>هل انتوا بس بتديروا الإعلانات ولا بتساعدوا في المتابعة كمان؟</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">بنركز أساسًا على جلب الاستفسارات المؤهلة وبنساعدك تبني سيستم متابعة بسيط، لكن الرد المباشر على المرضى بيفضل مسؤولية فريقك.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>هل ده منفصل عن Performax1 الأساسية؟</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">Performax1 for Clinics هو قسم متخصص من نفس الشركة (Performax1)، مبني خصيصًا حوالين احتياجات العيادات والمراكز الطبية — مش شركة تانية منفصلة.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+        <div class="final-cta-content">
+            <span class="section-tag">ابدأ دلوقتي</span>
+            <h2>جاهز تملأ جدول مواعيدك؟</h2>
+            <p>احجز استشارة مجانية دلوقتي، واعرف إزاي نقدر نجيبلك مرضى جدد بشكل مستمر وواضح النتيجة.</p>
+            <a href="https://calendly.com/performax1/30min" target="_blank" rel="noopener" class="btn-primary-clinics" style="display: inline-flex; font-size: 1.1rem; padding: 18px 40px;">
+                احجز استشارة مجانية الآن
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <p class="micro-trust">مفيش التزام. مفيش ضغط بيع. بس محادثة صريحة عن أهدافك.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <a href="clinics.html" class="footer-brand">
+                <img src="images/logo.png" class="theme-logo dark-logo" alt="Performax1">
+                <img src="images/logo-light.png" class="theme-logo light-logo" alt="Performax1">
+            </a>
+            <p class="footer-copy">&#169; 2026 <a href="index.html">Performax1</a> &mdash; Clinics Division</p>
+            <a href="index.html" class="footer-back">&#8592; الموقع الرئيسي</a>
+        </div>
+    </footer>
+
+    <button id="scrollToTopBtn" aria-label="Scroll to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </button>
+
+    <script>
+        // Theme
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'light') document.body.setAttribute('data-theme', 'light');
+
+        // Scroll to top
+        const scrollBtn = document.getElementById('scrollToTopBtn');
+        window.addEventListener('scroll', () => {
+            scrollBtn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        scrollBtn.addEventListener('click', () => {
+            const start = window.pageYOffset;
+            const duration = 600;
+            let startTime = null;
+            function step(t) {
+                if (!startTime) startTime = t;
+                const p = Math.min((t - startTime) / duration, 1);
+                const ease = p < 0.5 ? 4*p*p*p : 1 - Math.pow(-2*p+2, 3)/2;
+                window.scrollTo(0, start * (1 - ease));
+                if (p < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        });
+
+        // FAQ accordion
+        function toggleFaq(btn) {
+            const item = btn.closest('.faq-item');
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        }
+
+        // Fade-in on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; } });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.pain-card, .solution-card, .step-item, .stat-card, .who-item, .why-item, .faq-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(16px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
