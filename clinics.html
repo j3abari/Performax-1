@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Performax1 for Clinics | تسويق أداء للعيادات والمراكز الطبية</title>
-    <meta name="description" content="إعلانات ممولة متخصصة للعيادات ومراكز التجميل — نتيجتها مواعيد محجوزة، مش مجرد نقرات. استشارة مجانية مع Performax1.">
+    <meta name="description" content="إعلانات ممولة متخصصة للعيادات ومراكز التجميل — نتيجتها مواعيد محجوزة، مش مجرد نقرات.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,12 +14,33 @@
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Cairo', 'Inter', sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
-            direction: rtl;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+        }
+        body.lang-ar { font-family: 'Cairo', sans-serif; direction: rtl; }
+        body.lang-en { font-family: 'Inter', sans-serif; direction: ltr; }
+
+        /* ─── LANGUAGE SWITCHER ─── */
+        .lang-switcher {
+            display: flex; align-items: center;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px; padding: 3px; gap: 2px;
+        }
+        .lang-btn {
+            background: none; border: none; cursor: pointer;
+            padding: 5px 14px; border-radius: 20px;
+            font-size: 0.75rem; font-weight: 700;
+            color: var(--text-muted);
+            transition: all 0.25s;
+            font-family: inherit;
+            letter-spacing: 0.5px;
+        }
+        .lang-btn.active {
+            background: var(--color-primary);
+            color: #fff;
         }
 
         /* ─── NAVBAR ─── */
@@ -32,11 +53,9 @@
         }
         .nav-inner {
             max-width: 1200px; margin: 0 auto; padding: 0 20px;
-            display: flex; justify-content: space-between; align-items: center;
+            display: flex; justify-content: space-between; align-items: center; gap: 12px;
         }
-        .nav-brand {
-            display: flex; align-items: center; gap: 12px; text-decoration: none;
-        }
+        .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
         .nav-brand img { height: 38px; width: auto; object-fit: contain; }
         .nav-badge {
             background: rgba(230,25,25,0.12);
@@ -44,12 +63,11 @@
             color: var(--color-primary);
             font-size: 0.7rem; font-weight: 700;
             padding: 3px 10px; border-radius: 20px;
-            letter-spacing: 1px; text-transform: uppercase;
-            white-space: nowrap;
+            letter-spacing: 1px; text-transform: uppercase; white-space: nowrap;
         }
+        .nav-right { display: flex; align-items: center; gap: 12px; }
         .nav-cta-clinics {
-            background: var(--color-primary);
-            color: #fff !important;
+            background: var(--color-primary); color: #fff !important;
             padding: 10px 22px; border-radius: 8px;
             font-weight: 700; font-size: 0.85rem;
             text-decoration: none; white-space: nowrap;
@@ -57,13 +75,24 @@
         }
         .nav-cta-clinics:hover { background: var(--color-primary-hover); transform: translateY(-1px); }
 
+        /* ─── I18N VISIBILITY ─── */
+        .ar { display: none; }
+        .en { display: none; }
+        body.lang-ar .ar { display: revert; }
+        body.lang-en .en { display: revert; }
+        /* inline elements */
+        span.ar, span.en, a.ar, a.en, button.ar, button.en { display: inline; }
+        body.lang-ar span.ar, body.lang-ar a.ar, body.lang-ar button.ar { display: inline; }
+        body.lang-en span.en, body.lang-en a.en, body.lang-en button.en { display: inline; }
+        body.lang-ar span.en, body.lang-ar a.en { display: none; }
+        body.lang-en span.ar, body.lang-en a.ar { display: none; }
+
         /* ─── HERO ─── */
         .hero-clinics {
             min-height: 100vh;
             display: flex; flex-direction: column;
             align-items: center; justify-content: center;
-            text-align: center;
-            padding: 120px 20px 80px;
+            text-align: center; padding: 120px 20px 80px;
             background: radial-gradient(ellipse at top center, rgba(230,25,25,0.08) 0%, var(--bg-primary) 60%);
             position: relative; overflow: hidden;
         }
@@ -73,10 +102,9 @@
             background-image:
                 linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-            background-size: 50px 50px;
-            pointer-events: none; z-index: 0;
+            background-size: 50px 50px; pointer-events: none; z-index: 0;
         }
-        .hero-content { position: relative; z-index: 1; max-width: 780px; }
+        .hero-content { position: relative; z-index: 1; max-width: 800px; }
         .eyebrow-tag {
             display: inline-block;
             border: 1px solid var(--color-primary);
@@ -84,19 +112,17 @@
             color: var(--color-primary);
             font-weight: 700; font-size: 0.78rem;
             padding: 7px 20px; border-radius: 50px;
-            letter-spacing: 1.5px; text-transform: uppercase;
-            margin-bottom: 1.8rem;
+            letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1.8rem;
         }
         .hero-clinics h1 {
             font-size: clamp(2.2rem, 5vw, 3.8rem);
-            font-weight: 800; line-height: 1.2;
-            margin-bottom: 1.2rem; color: var(--text-primary);
+            font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem;
         }
-        .hero-clinics h1 span { color: var(--color-primary); }
+        .hero-clinics h1 .red { color: var(--color-primary); }
         .hero-subtitle {
-            font-size: clamp(1rem, 2.2vw, 1.15rem);
-            color: var(--text-secondary); line-height: 1.8;
-            max-width: 640px; margin: 0 auto 2.5rem;
+            font-size: clamp(0.98rem, 2.2vw, 1.12rem);
+            color: var(--text-secondary); line-height: 1.85;
+            max-width: 650px; margin: 0 auto 2.5rem;
         }
         .hero-cta-group {
             display: flex; flex-wrap: wrap; gap: 1rem;
@@ -105,25 +131,22 @@
         .btn-primary-clinics {
             background: var(--color-primary); color: #fff !important;
             padding: 16px 36px; border-radius: 10px;
-            font-weight: 800; font-size: 1.05rem;
+            font-weight: 800; font-size: 1rem;
             text-decoration: none; transition: all 0.3s;
             display: inline-flex; align-items: center; gap: 8px;
         }
         .btn-primary-clinics:hover { background: var(--color-primary-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(230,25,25,0.35); }
         .btn-secondary-clinics {
             color: var(--text-secondary); font-size: 0.95rem;
-            text-decoration: none; font-weight: 500;
-            transition: color 0.3s;
+            text-decoration: none; font-weight: 500; transition: color 0.3s;
             display: inline-flex; align-items: center; gap: 6px;
         }
         .btn-secondary-clinics:hover { color: var(--text-primary); }
         .trust-line {
-            margin-top: 1.8rem;
-            font-size: 0.82rem; color: var(--text-muted);
-            display: flex; align-items: center; justify-content: center; gap: 6px;
+            margin-top: 1.8rem; font-size: 0.82rem; color: var(--text-muted);
+            display: flex; align-items: center; justify-content: center; gap: 8px;
         }
-        .trust-line::before { content: ''; display: block; width: 20px; height: 1px; background: var(--text-muted); }
-        .trust-line::after  { content: ''; display: block; width: 20px; height: 1px; background: var(--text-muted); }
+        .trust-line::before, .trust-line::after { content: ''; display: block; width: 20px; height: 1px; background: var(--text-muted); }
 
         /* ─── SECTION BASE ─── */
         section { padding: 100px 20px; }
@@ -135,26 +158,20 @@
             color: var(--color-primary);
             font-size: 0.75rem; font-weight: 700;
             padding: 6px 18px; border-radius: 50px;
-            letter-spacing: 1.5px; text-transform: uppercase;
-            margin-bottom: 1.2rem;
+            letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1.2rem;
         }
         .section-title {
             font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-            font-weight: 800; margin-bottom: 1rem;
-            color: var(--text-primary); line-height: 1.25;
+            font-weight: 800; margin-bottom: 1rem; line-height: 1.25;
         }
-        .section-subtitle {
-            font-size: 1rem; color: var(--text-secondary);
-            line-height: 1.8; max-width: 620px;
-        }
+        .section-subtitle { font-size: 1rem; color: var(--text-secondary); line-height: 1.8; max-width: 640px; }
         .section-header-center { text-align: center; margin-bottom: 60px; }
         .section-header-center .section-subtitle { margin: 0 auto; }
 
-        /* ─── PROBLEM SECTION ─── */
-        .section-problem { background: var(--bg-surface); }
+        /* ─── PAIN CARDS ─── */
+        .section-alt { background: var(--bg-surface); }
         .pain-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 24px; margin-top: 48px;
         }
         .pain-card {
@@ -166,46 +183,38 @@
         .pain-card:hover { border-color: rgba(230,25,25,0.2); transform: translateY(-3px); }
         .pain-icon {
             width: 44px; height: 44px;
-            background: rgba(230,25,25,0.08);
-            border: 1px solid rgba(230,25,25,0.15);
-            border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
+            background: rgba(230,25,25,0.08); border: 1px solid rgba(230,25,25,0.15);
+            border-radius: 10px; display: flex; align-items: center; justify-content: center;
             font-size: 1.2rem; margin-bottom: 16px;
         }
-        .pain-card h3 { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+        .pain-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
         .pain-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; }
 
         /* ─── SOLUTION ─── */
         .solution-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 24px; margin-top: 48px;
         }
         .solution-card {
-            background: var(--bg-surface);
-            border: 1px solid rgba(255,255,255,0.06);
+            background: var(--bg-surface); border: 1px solid rgba(255,255,255,0.06);
             border-radius: 14px; padding: 32px 28px;
             position: relative; overflow: hidden; transition: all 0.3s;
         }
         .solution-card::before {
-            content: '';
-            position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
             background: linear-gradient(90deg, var(--color-primary), var(--color-primary-hover));
         }
         .solution-icon { font-size: 1.8rem; margin-bottom: 16px; }
         .solution-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
         .solution-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; }
 
-        /* ─── WHO IS THIS FOR ─── */
-        .who-section { background: var(--bg-surface); }
+        /* ─── WHO ─── */
         .who-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 16px; margin-top: 40px;
         }
         .who-item {
-            background: var(--bg-primary);
-            border: 1px solid rgba(255,255,255,0.06);
+            background: var(--bg-primary); border: 1px solid rgba(255,255,255,0.06);
             border-radius: 10px; padding: 18px 20px;
             display: flex; align-items: center; gap: 10px;
             font-size: 0.9rem; font-weight: 600; transition: all 0.3s;
@@ -214,12 +223,11 @@
         .dot { width: 8px; height: 8px; background: var(--color-primary); border-radius: 50%; flex-shrink: 0; }
         .who-note { margin-top: 24px; font-size: 0.88rem; color: var(--text-muted); font-style: italic; }
 
-        /* ─── PROCESS ─── */
+        /* ─── STEPS ─── */
         .steps-list { margin-top: 48px; display: flex; flex-direction: column; gap: 20px; }
         .step-item {
             display: flex; gap: 24px; align-items: flex-start;
-            background: var(--bg-surface);
-            border: 1px solid rgba(255,255,255,0.06);
+            background: var(--bg-surface); border: 1px solid rgba(255,255,255,0.06);
             border-radius: 14px; padding: 28px; transition: border-color 0.3s;
         }
         .step-item:hover { border-color: rgba(230,25,25,0.2); }
@@ -232,16 +240,13 @@
         .step-body h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
         .step-body p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; }
 
-        /* ─── RESULTS ─── */
-        .results-section { background: var(--bg-surface); }
+        /* ─── STATS ─── */
         .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 24px; margin-top: 48px;
         }
         .stat-card {
-            background: var(--bg-primary);
-            border: 1px solid rgba(255,255,255,0.06);
+            background: var(--bg-primary); border: 1px solid rgba(255,255,255,0.06);
             border-radius: 14px; padding: 36px 28px;
             text-align: center; transition: all 0.3s;
         }
@@ -249,74 +254,62 @@
         .stat-number { font-size: 2.8rem; font-weight: 800; color: var(--color-primary); margin-bottom: 8px; }
         .stat-label { font-size: 0.9rem; color: var(--text-secondary); font-weight: 500; }
         .placeholder-badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: var(--text-muted); font-size: 0.7rem;
-            padding: 2px 10px; border-radius: 20px; margin-top: 6px;
+            display: inline-block; background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1); color: var(--text-muted);
+            font-size: 0.7rem; padding: 2px 10px; border-radius: 20px; margin-top: 6px;
         }
         .testimonial-block {
-            margin-top: 48px;
-            background: var(--bg-primary);
+            margin-top: 48px; background: var(--bg-primary);
             border: 1px solid rgba(255,255,255,0.06);
-            border-right: 3px solid var(--color-primary);
+            border-inline-end: 3px solid var(--color-primary);
             border-radius: 14px; padding: 36px;
             font-style: italic; color: var(--text-secondary);
             font-size: 1rem; line-height: 1.8;
         }
 
-        /* ─── WHY US ─── */
+        /* ─── WHY LIST ─── */
         .why-list { margin-top: 40px; display: flex; flex-direction: column; gap: 16px; }
         .why-item {
             display: flex; gap: 14px; align-items: flex-start;
-            padding: 20px 24px;
-            background: var(--bg-surface);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 12px;
+            padding: 20px 24px; background: var(--bg-surface);
+            border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;
         }
         .why-check {
             width: 24px; height: 24px; flex-shrink: 0;
-            background: rgba(230,25,25,0.1);
-            border: 1px solid rgba(230,25,25,0.25);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; margin-top: 2px;
+            background: rgba(230,25,25,0.1); border: 1px solid rgba(230,25,25,0.25);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 2px;
         }
         .why-check svg { width: 12px; height: 12px; color: var(--color-primary); }
         .why-item p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; }
 
         /* ─── FAQ ─── */
-        .faq-section { background: var(--bg-surface); }
         .faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 16px; }
         .faq-item {
-            background: var(--bg-primary);
-            border: 1px solid rgba(255,255,255,0.06);
+            background: var(--bg-primary); border: 1px solid rgba(255,255,255,0.06);
             border-radius: 12px; overflow: hidden;
         }
         .faq-question {
-            width: 100%; text-align: right;
+            width: 100%; text-align: inherit;
             background: none; border: none; cursor: pointer;
             padding: 22px 24px;
             display: flex; justify-content: space-between; align-items: center;
-            font-family: 'Cairo', sans-serif;
             font-size: 0.95rem; font-weight: 700; color: var(--text-primary);
         }
+        body.lang-ar .faq-question { font-family: 'Cairo', sans-serif; }
+        body.lang-en .faq-question { font-family: 'Inter', sans-serif; }
         .faq-icon {
             width: 24px; height: 24px; flex-shrink: 0;
-            background: rgba(230,25,25,0.08);
-            border: 1px solid rgba(230,25,25,0.2);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: var(--color-primary); font-size: 1rem;
-            transition: transform 0.3s;
+            background: rgba(230,25,25,0.08); border: 1px solid rgba(230,25,25,0.2);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: var(--color-primary); font-size: 1rem; transition: transform 0.3s;
         }
         .faq-item.open .faq-icon { transform: rotate(45deg); }
         .faq-answer {
             max-height: 0; overflow: hidden;
             transition: max-height 0.4s ease, padding 0.3s;
-            padding: 0 24px;
-            font-size: 0.88rem; color: var(--text-secondary); line-height: 1.8;
+            padding: 0 24px; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.8;
         }
-        .faq-item.open .faq-answer { max-height: 200px; padding-bottom: 22px; }
+        .faq-item.open .faq-answer { max-height: 220px; padding-bottom: 22px; }
 
         /* ─── FINAL CTA ─── */
         .final-cta {
@@ -325,8 +318,7 @@
             position: relative; overflow: hidden;
         }
         .final-cta::before {
-            content: '';
-            position: absolute; inset: 0;
+            content: ''; position: absolute; inset: 0;
             background-image:
                 linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
@@ -334,13 +326,12 @@
         }
         .final-cta-content { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
         .final-cta h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem; }
-        .final-cta p { color: var(--text-secondary); font-size: 1rem; line-height: 1.8; margin-bottom: 2rem; }
+        .final-cta > .final-cta-content > p { color: var(--text-secondary); font-size: 1rem; line-height: 1.8; margin-bottom: 2rem; }
         .micro-trust { margin-top: 1.2rem; font-size: 0.82rem; color: var(--text-muted); }
 
         /* ─── FOOTER ─── */
         footer {
-            background: var(--bg-surface);
-            padding: 1.5rem 20px;
+            background: var(--bg-surface); padding: 1.5rem 20px;
             border-top: 1px solid var(--bg-surface-hover);
         }
         .footer-inner {
@@ -357,14 +348,16 @@
 
         /* ─── SCROLL TO TOP ─── */
         #scrollToTopBtn {
-            position: fixed; bottom: 24px; left: 24px; z-index: 999;
+            position: fixed; bottom: 24px;
             width: 44px; height: 44px; border-radius: 50%;
             background: var(--color-primary); color: #fff;
             border: none; cursor: pointer;
             display: flex; align-items: center; justify-content: center;
             opacity: 0; transform: translateY(10px);
-            transition: opacity 0.3s, transform 0.3s;
+            transition: opacity 0.3s, transform 0.3s; z-index: 999;
         }
+        body.lang-ar #scrollToTopBtn { left: 24px; }
+        body.lang-en #scrollToTopBtn { right: 24px; }
         #scrollToTopBtn.visible { opacity: 1; transform: translateY(0); }
 
         /* ─── RESPONSIVE ─── */
@@ -375,12 +368,13 @@
             .step-item { flex-direction: column; gap: 14px; }
             .hero-cta-group { flex-direction: column; }
             .btn-primary-clinics { width: 100%; justify-content: center; }
+            .lang-btn { padding: 5px 10px; font-size: 0.7rem; }
         }
     </style>
 </head>
-<body>
+<body class="lang-ar">
 
-    <!-- NAVBAR -->
+    <!-- ═══ NAVBAR ═══ -->
     <nav>
         <div class="nav-inner">
             <a href="clinics.html" class="nav-brand">
@@ -388,288 +382,417 @@
                 <img src="images/logo-light.png" class="theme-logo light-logo" alt="Performax1">
                 <span class="nav-badge">for Clinics</span>
             </a>
-            <a href="https://calendly.com/performax1/30min" target="_blank" rel="noopener" class="nav-cta-clinics">
-                احجز استشارة مجانية
-            </a>
+            <div class="nav-right">
+                <!-- Language Switcher -->
+                <div class="lang-switcher" role="group" aria-label="Language selector">
+                    <button class="lang-btn active" id="btn-ar" onclick="setLang('ar')">عربي</button>
+                    <button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button>
+                </div>
+                <!-- CTA -->
+                <a href="https://calendly.com/performax1/30min" target="_blank" rel="noopener" class="nav-cta-clinics ar">احجز استشارة مجانية</a>
+                <a href="https://calendly.com/performax1/30min" target="_blank" rel="noopener" class="nav-cta-clinics en">Book a Free Consultation</a>
+            </div>
         </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- ═══ HERO ═══ -->
     <section class="hero-clinics">
         <div class="hero-content">
-            <span class="eyebrow-tag">Performance Marketing for Clinics &amp; Medical Centers</span>
-            <h1>املأ جدول <span>مواعيدك</span>،<br>مش بس ميزانية إعلاناتك</h1>
-            <p class="hero-subtitle">
-                بنشغّل إعلانات ممولة للعيادات والمراكز الطبية ومراكز التجميل — مبنية على نتيجة واحدة:
-                مرضى فعليين بيحجزوا مواعيد، مش مجرد نقرات ومشاهدات.
-            </p>
-            <div class="hero-cta-group">
-                <a href="https://calendly.com/performax1/30min" target="_blank" rel="noopener" class="btn-primary-clinics">
-                    احجز استشارة مجانية
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-                <a href="#how-we-work" class="btn-secondary-clinics">
-                    شوف كيف بنشتغل
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-                </a>
+            <!-- Arabic -->
+            <div class="ar">
+                <span class="eyebrow-tag">Performance Marketing for Clinics &amp; Medical Centers</span>
+                <h1>املأ جدول <span class="red">مواعيدك</span>،<br>مش بس ميزانية إعلاناتك</h1>
+                <p class="hero-subtitle">بنشغّل إعلانات ممولة للعيادات والمراكز الطبية ومراكز التجميل — مبنية على نتيجة واحدة: مرضى فعليين بيحجزوا مواعيد، مش مجرد نقرات ومشاهدات.</p>
+                <div class="hero-cta-group">
+                    <a href="https://calendly.com/performax1/30min" target="_blank" rel="noopener" class="btn-primary-clinics">
+                        احجز استشارة مجانية
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="#how-we-work" class="btn-secondary-clinics">شوف كيف بنشتغل ↓</a>
+                </div>
+                <p class="trust-line">جزء من Performax1 — شريك موثوق للعلامات التجارية في مصر</p>
             </div>
-            <p class="trust-line">جزء من Performax1 — شريك موثوق للعلامات التجارية في مصر</p>
+            <!-- English -->
+            <div class="en">
+                <span class="eyebrow-tag">Performance Marketing for Clinics &amp; Medical Centers</span>
+                <h1>Fill Your <span class="red">Appointment Book</span>,<br>Not Just Your Ad Spend</h1>
+                <p class="hero-subtitle">We run paid advertising for clinics, medical centers, and beauty &amp; wellness businesses — built around one result: qualified patients booking appointments, not just clicks and likes.</p>
+                <div class="hero-cta-group">
+                    <a href="https://calendly.com/performax1/30min" target="_blank" rel="noopener" class="btn-primary-clinics">
+                        Book a Free Consultation
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="#how-we-work" class="btn-secondary-clinics">See how we work ↓</a>
+                </div>
+                <p class="trust-line">Part of Performax1 — trusted partner for brands across Egypt</p>
+            </div>
         </div>
     </section>
 
-    <!-- PROBLEM -->
-    <section class="section-problem">
+    <!-- ═══ PROBLEM ═══ -->
+    <section class="section-alt">
         <div class="container-md">
             <div class="section-header-center">
-                <span class="section-tag">المشكلة</span>
-                <h2 class="section-title">عيادتك ممتازة. بس جدول المواعيد مش بيعكس ده</h2>
-                <p class="section-subtitle">لو حاسس بأي حاجة من دي، أنت مش لوحدك — وده بالظبط اللي بنحله:</p>
+                <div class="ar">
+                    <span class="section-tag">المشكلة</span>
+                    <h2 class="section-title">عيادتك ممتازة. بس جدول المواعيد مش بيعكس ده</h2>
+                    <p class="section-subtitle">لو حاسس بأي حاجة من دي، أنت مش لوحدك — وده بالظبط اللي بنحله:</p>
+                </div>
+                <div class="en">
+                    <span class="section-tag">The Problem</span>
+                    <h2 class="section-title">Your clinic is great. Your schedule doesn't reflect that.</h2>
+                    <p class="section-subtitle">If any of these sound familiar, you're not alone — and this is exactly what we solve:</p>
+                </div>
             </div>
             <div class="pain-grid">
                 <div class="pain-card">
                     <div class="pain-icon">💸</div>
-                    <h3>إعلانات بتاخد فلوس من غير حجوزات حقيقية</h3>
-                    <p>بتصرف على Meta أو Google، بتجيب لايكات ومشاهدات، لكن التليفون مش بيرن بمرضى فعليين.</p>
+                    <h3 class="ar">إعلانات بتاخد فلوس من غير حجوزات حقيقية</h3>
+                    <h3 class="en">Ads that spend money but don't book patients</h3>
+                    <p class="ar">بتصرف على Meta أو Google، بتجيب لايكات ومشاهدات، لكن التليفون مش بيرن بمرضى فعليين.</p>
+                    <p class="en">You're running ads on Meta or Google, getting likes and views, but the phone isn't ringing with real patients.</p>
                 </div>
                 <div class="pain-card">
                     <div class="pain-icon">📵</div>
-                    <h3>متابعة العملاء المحتملين بتضيع</h3>
-                    <p>حد بيسأل عن سعر أو موعد، وبعدين بيختفي — مفيش سيستم بيتابعه ويرجّعه يحجز.</p>
+                    <h3 class="ar">متابعة العملاء المحتملين بتضيع</h3>
+                    <h3 class="en">Leads slip through the cracks</h3>
+                    <p class="ar">حد بيسأل عن سعر أو موعد، وبعدين بيختفي — مفيش سيستم بيتابعه ويرجّعه يحجز.</p>
+                    <p class="en">Someone asks about a price or appointment, then vanishes — there's no system to follow up and bring them back.</p>
                 </div>
                 <div class="pain-card">
                     <div class="pain-icon">📅</div>
-                    <h3>مواعيد فاضية في أيام معينة</h3>
-                    <p>عندك طاقة استيعابية أكتر من اللي بتستغلها، والوقت الفاضي ده بيتحول لخسارة مباشرة.</p>
+                    <h3 class="ar">مواعيد فاضية في أيام معينة</h3>
+                    <h3 class="en">Empty slots on certain days</h3>
+                    <p class="ar">عندك طاقة استيعابية أكتر من اللي بتستغلها، والوقت الفاضي ده بيتحول لخسارة مباشرة.</p>
+                    <p class="en">You have more capacity than you're using, and that empty time translates directly into lost revenue.</p>
                 </div>
                 <div class="pain-card">
                     <div class="pain-icon">📊</div>
-                    <h3>مش عارف الإعلانات فعلاً بتجيب كام مريض</h3>
-                    <p>بتصرف فلوس على تسويق بس مفيش رقم واضح يقولك العائد الحقيقي على كل جنيه.</p>
+                    <h3 class="ar">مش عارف الإعلانات فعلاً بتجيب كام مريض</h3>
+                    <h3 class="en">No clear picture of your ad ROI</h3>
+                    <p class="ar">بتصرف فلوس على تسويق بس مفيش رقم واضح يقولك العائد الحقيقي على كل جنيه.</p>
+                    <p class="en">You're spending on marketing but have no clear number telling you the real return on every pound spent.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SOLUTION -->
+    <!-- ═══ SOLUTION ═══ -->
     <section>
         <div class="container-md">
             <div class="section-header-center">
-                <span class="section-tag">الحل</span>
-                <h2 class="section-title">احنا مش بنبيعلك "إعلانات"<br>بنبيعلك مواعيد محجوزة</h2>
-                <p class="section-subtitle">فريقنا متخصص في التسويق للخدمات — لأن رحلة المريض مختلفة تمامًا عن رحلة المتسوق.</p>
+                <div class="ar">
+                    <span class="section-tag">الحل</span>
+                    <h2 class="section-title">احنا مش بنبيعلك "إعلانات"<br>بنبيعلك مواعيد محجوزة</h2>
+                    <p class="section-subtitle">فريقنا متخصص في التسويق للخدمات — لأن رحلة المريض مختلفة تمامًا عن رحلة المتسوق.</p>
+                </div>
+                <div class="en">
+                    <span class="section-tag">What We Do</span>
+                    <h2 class="section-title">We don't sell you "ads".<br>We sell you booked appointments.</h2>
+                    <p class="section-subtitle">Our team specializes in service-based marketing — because a patient's journey is completely different from a shopper's.</p>
+                </div>
             </div>
             <div class="solution-grid">
                 <div class="solution-card">
                     <div class="solution-icon">🎯</div>
-                    <h3>استهداف دقيق للمنطقة والاحتياج</h3>
-                    <p>مش بنستهدف "كل الناس" — بنوصلك للناس اللي فعلًا محتاجة خدمتك في نطاقك الجغرافي، في التوقيت المناسب.</p>
+                    <h3 class="ar">استهداف دقيق للمنطقة والاحتياج</h3>
+                    <h3 class="en">Precise local targeting</h3>
+                    <p class="ar">مش بنستهدف "كل الناس" — بنوصلك للناس اللي فعلًا محتاجة خدمتك في نطاقك الجغرافي، في التوقيت المناسب.</p>
+                    <p class="en">We don't target "everyone" — we reach people who actually need your service, in your geographic area, at the right moment.</p>
                 </div>
                 <div class="solution-card">
                     <div class="solution-icon">📞</div>
-                    <h3>متابعة كل عميل محتمل</h3>
-                    <p>مش بنسيبك تخسر أي استفسار. بنساعدك تبني سيستم متابعة يحول أكبر عدد ممكن من الاستفسارات لحجوزات فعلية.</p>
+                    <h3 class="ar">متابعة كل عميل محتمل</h3>
+                    <h3 class="en">Every lead gets followed up</h3>
+                    <p class="ar">مش بنسيبك تخسر أي استفسار. بنساعدك تبني سيستم متابعة يحول أكبر عدد ممكن من الاستفسارات لحجوزات فعلية.</p>
+                    <p class="en">We don't let you lose a single inquiry. We help you build a follow-up system that converts as many leads as possible into real bookings.</p>
                 </div>
                 <div class="solution-card">
                     <div class="solution-icon">📈</div>
-                    <h3>تقارير بلغة تفهمها</h3>
-                    <p>مش هتشوف "Impressions" و"Reach" بس. هتشوف: كام موعد جالك، بكام تكلفة، ومن أنهي إعلان بالظبط.</p>
+                    <h3 class="ar">تقارير بلغة تفهمها</h3>
+                    <h3 class="en">Reports you can actually understand</h3>
+                    <p class="ar">مش هتشوف "Impressions" و"Reach" بس. هتشوف: كام موعد جالك، بكام تكلفة، ومن أنهي إعلان بالظبط.</p>
+                    <p class="en">Not just "Impressions" and "Reach." You'll see: how many appointments came in, at what cost, and from exactly which ad.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- WHO IS THIS FOR -->
-    <section class="who-section">
+    <!-- ═══ WHO IS THIS FOR ═══ -->
+    <section class="section-alt">
         <div class="container-md">
             <div class="section-header-center">
-                <span class="section-tag">مناسب لـ</span>
-                <h2 class="section-title">مناسب لو أنت صاحب:</h2>
+                <div class="ar">
+                    <span class="section-tag">مناسب لـ</span>
+                    <h2 class="section-title">مناسب لو أنت صاحب:</h2>
+                </div>
+                <div class="en">
+                    <span class="section-tag">Who It's For</span>
+                    <h2 class="section-title">Built for owners of:</h2>
+                </div>
             </div>
             <div class="who-grid">
-                <div class="who-item"><span class="dot"></span> عيادة أسنان</div>
-                <div class="who-item"><span class="dot"></span> عيادة تخسيس وتغذية</div>
-                <div class="who-item"><span class="dot"></span> مركز تجميل وليزر</div>
-                <div class="who-item"><span class="dot"></span> عيادة جلدية</div>
-                <div class="who-item"><span class="dot"></span> مركز علاج طبيعي</div>
-                <div class="who-item"><span class="dot"></span> عيادة نسا وتوليد</div>
-                <div class="who-item"><span class="dot"></span> مركز طبي متعدد التخصصات</div>
-                <div class="who-item"><span class="dot"></span> أي نشاط بيعتمد على حجز مواعيد</div>
+                <div class="who-item"><span class="dot"></span><span class="ar">عيادة أسنان</span><span class="en">Dental Clinic</span></div>
+                <div class="who-item"><span class="dot"></span><span class="ar">عيادة تخسيس وتغذية</span><span class="en">Weight Loss &amp; Nutrition Clinic</span></div>
+                <div class="who-item"><span class="dot"></span><span class="ar">مركز تجميل وليزر</span><span class="en">Beauty &amp; Laser Center</span></div>
+                <div class="who-item"><span class="dot"></span><span class="ar">عيادة جلدية</span><span class="en">Dermatology Clinic</span></div>
+                <div class="who-item"><span class="dot"></span><span class="ar">مركز علاج طبيعي</span><span class="en">Physical Therapy Center</span></div>
+                <div class="who-item"><span class="dot"></span><span class="ar">عيادة نسا وتوليد</span><span class="en">OB/GYN Clinic</span></div>
+                <div class="who-item"><span class="dot"></span><span class="ar">مركز طبي متعدد التخصصات</span><span class="en">Multi-specialty Medical Center</span></div>
+                <div class="who-item"><span class="dot"></span><span class="ar">أي نشاط بيعتمد على حجز مواعيد</span><span class="en">Any appointment-based business</span></div>
             </div>
-            <p class="who-note">لو نشاطك مش موجود في القائمة، ابعتلنا رسالة — غالبًا هنقدر نساعدك برضو.</p>
+            <p class="who-note ar">لو نشاطك مش موجود في القائمة، ابعتلنا رسالة — غالبًا هنقدر نساعدك برضو.</p>
+            <p class="who-note en">Don't see your specialty? Send us a message — we can likely help you too.</p>
         </div>
     </section>
 
-    <!-- PROCESS -->
+    <!-- ═══ PROCESS ═══ -->
     <section id="how-we-work">
         <div class="container-md">
             <div class="section-header-center">
-                <span class="section-tag">الطريقة</span>
-                <h2 class="section-title">من أول مكالمة لحد أول موعد محجوز</h2>
+                <div class="ar">
+                    <span class="section-tag">الطريقة</span>
+                    <h2 class="section-title">من أول مكالمة لحد أول موعد محجوز</h2>
+                </div>
+                <div class="en">
+                    <span class="section-tag">How It Works</span>
+                    <h2 class="section-title">From first call to first booked appointment</h2>
+                </div>
             </div>
             <div class="steps-list">
                 <div class="step-item">
                     <div class="step-number">1</div>
                     <div class="step-body">
-                        <h3>استشارة مجانية (15–20 دقيقة)</h3>
-                        <p>بنفهم نشاطك، منطقتك، منافسينك، والهدف اللي عايز توصله — من غير أي التزام.</p>
+                        <h3 class="ar">استشارة مجانية (15–20 دقيقة)</h3>
+                        <h3 class="en">Free Consultation (15–20 min)</h3>
+                        <p class="ar">بنفهم نشاطك، منطقتك، منافسينك، والهدف اللي عايز توصله — من غير أي التزام.</p>
+                        <p class="en">We learn about your business, location, competition, and goals — no strings attached.</p>
                     </div>
                 </div>
                 <div class="step-item">
                     <div class="step-number">2</div>
                     <div class="step-body">
-                        <h3>خطة مخصصة لعيادتك</h3>
-                        <p>مش قالب جاهز. بنبني خطة إعلانية مبنية على نوع خدماتك، الميزانية المتاحة، وأهدافك في العدد المستهدف من المرضى شهريًا.</p>
+                        <h3 class="ar">خطة مخصصة لعيادتك</h3>
+                        <h3 class="en">A custom plan for your clinic</h3>
+                        <p class="ar">مش قالب جاهز. بنبني خطة إعلانية مبنية على نوع خدماتك، الميزانية المتاحة، وأهدافك في العدد المستهدف من المرضى شهريًا.</p>
+                        <p class="en">Not a template. A tailored ad plan built around your services, budget, and monthly patient targets.</p>
                     </div>
                 </div>
                 <div class="step-item">
                     <div class="step-number">3</div>
                     <div class="step-body">
-                        <h3>إطلاق الحملات ومتابعة يومية</h3>
-                        <p>بنشغّل الإعلانات على المنصات المناسبة (Meta / Google حسب الحالة)، وبنراقب الأداء يوم بيوم مش شهر بشهر.</p>
+                        <h3 class="ar">إطلاق الحملات ومتابعة يومية</h3>
+                        <h3 class="en">Campaign launch with daily monitoring</h3>
+                        <p class="ar">بنشغّل الإعلانات على المنصات المناسبة (Meta / Google حسب الحالة)، وبنراقب الأداء يوم بيوم مش شهر بشهر.</p>
+                        <p class="en">We run ads on the right platforms (Meta / Google depending on your case) and monitor performance daily — not monthly.</p>
                     </div>
                 </div>
                 <div class="step-item">
                     <div class="step-number">4</div>
                     <div class="step-body">
-                        <h3>سيستم متابعة العملاء المحتملين</h3>
-                        <p>بنساعدك تنظم عملية الرد والمتابعة على أي استفسار — سواء عن طريق فريقك أو أدوات بسيطة بنجهزها لك.</p>
+                        <h3 class="ar">سيستم متابعة العملاء المحتملين</h3>
+                        <h3 class="en">Lead follow-up system</h3>
+                        <p class="ar">بنساعدك تنظم عملية الرد والمتابعة على أي استفسار — سواء عن طريق فريقك أو أدوات بسيطة بنجهزها لك.</p>
+                        <p class="en">We help you organize your response and follow-up process — through your team or simple tools we set up for you.</p>
                     </div>
                 </div>
                 <div class="step-item">
                     <div class="step-number">5</div>
                     <div class="step-body">
-                        <h3>تقرير شهري + تحسين مستمر</h3>
-                        <p>كل شهر بتاخد تقرير واضح: عدد الاستفسارات، عدد المواعيد المحجوزة، وتكلفة كل موعد — وبنضبط الخطة على أساسه.</p>
+                        <h3 class="ar">تقرير شهري + تحسين مستمر</h3>
+                        <h3 class="en">Monthly report + continuous optimization</h3>
+                        <p class="ar">كل شهر بتاخد تقرير واضح: عدد الاستفسارات، عدد المواعيد المحجوزة، وتكلفة كل موعد — وبنضبط الخطة على أساسه.</p>
+                        <p class="en">Every month you get a clear report: total inquiries, total appointments booked, cost per appointment — and we adjust the plan accordingly.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- RESULTS -->
-    <section class="results-section">
+    <!-- ═══ RESULTS ═══ -->
+    <section class="section-alt">
         <div class="container-md">
             <div class="section-header-center">
-                <span class="section-tag">النتائج</span>
-                <h2 class="section-title">أرقام حقيقية، مش وعود</h2>
-                <p class="section-subtitle">هتتحدث بأرقام فعلية بمجرد توفر بيانات أول عملاء القطاع.</p>
+                <div class="ar">
+                    <span class="section-tag">النتائج</span>
+                    <h2 class="section-title">أرقام حقيقية، مش وعود</h2>
+                    <p class="section-subtitle">هتتحدث بأرقام فعلية بمجرد توفر بيانات أول عملاء القطاع.</p>
+                </div>
+                <div class="en">
+                    <span class="section-tag">Results</span>
+                    <h2 class="section-title">Real numbers, not promises</h2>
+                    <p class="section-subtitle">Will be updated with real data as soon as our first clinic clients come in.</p>
+                </div>
             </div>
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-number">+XX%</div>
-                    <div class="stat-label">زيادة في عدد المواعيد المحجوزة شهريًا</div>
-                    <span class="placeholder-badge">قريبًا</span>
+                    <div class="stat-label ar">زيادة في عدد المواعيد المحجوزة شهريًا</div>
+                    <div class="stat-label en">Increase in monthly booked appointments</div>
+                    <span class="placeholder-badge ar">قريبًا</span>
+                    <span class="placeholder-badge en">Coming Soon</span>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">XX جنيه</div>
-                    <div class="stat-label">متوسط تكلفة الموعد المحجوز</div>
-                    <span class="placeholder-badge">قريبًا</span>
+                    <div class="stat-number">XX</div>
+                    <div class="stat-label ar">متوسط تكلفة الموعد المحجوز (بالجنيه)</div>
+                    <div class="stat-label en">Average cost per booked appointment (EGP)</div>
+                    <span class="placeholder-badge ar">قريبًا</span>
+                    <span class="placeholder-badge en">Coming Soon</span>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">XX+</div>
-                    <div class="stat-label">عيادة ومركز نشتغل معاهم حاليًا</div>
-                    <span class="placeholder-badge">قريبًا</span>
+                    <div class="stat-label ar">عيادة ومركز نشتغل معاهم حاليًا</div>
+                    <div class="stat-label en">Clinics &amp; centers currently working with us</div>
+                    <span class="placeholder-badge ar">قريبًا</span>
+                    <span class="placeholder-badge en">Coming Soon</span>
                 </div>
             </div>
             <div class="testimonial-block">
-                "اقتباس من عميل حقيقي عن تجربته بعد التعاون — يُضاف بعد الحصول على أول عملاء في القطاع."
-                <br><br>
-                <strong style="color: var(--text-primary); font-style: normal;">— اسم الطبيب / صاحب المركز، اسم العيادة</strong>
+                <span class="ar">"اقتباس من عميل حقيقي — يُضاف بعد الحصول على أول عملاء في القطاع."<br><br><strong style="color:var(--text-primary);font-style:normal;">— اسم الطبيب / صاحب المركز، اسم العيادة</strong></span>
+                <span class="en">"A testimonial from a real client — will be added once our first clinic clients come on board."<br><br><strong style="color:var(--text-primary);font-style:normal;">— Clinic Owner, Clinic Name</strong></span>
             </div>
         </div>
     </section>
 
-    <!-- WHY US -->
+    <!-- ═══ WHY US ═══ -->
     <section>
         <div class="container-md">
             <div class="section-header-center">
-                <span class="section-tag">ليه Performax1</span>
-                <h2 class="section-title">ليه Performax1؟</h2>
-                <p class="section-subtitle">Performax1 شركة تسويق أداء متخصصة — قسم العيادات هو امتداد متخصص من نفس الخبرة، مبني خصيصًا حوالين احتياجات أصحاب العيادات والمراكز الطبية.</p>
+                <div class="ar">
+                    <span class="section-tag">ليه Performax1</span>
+                    <h2 class="section-title">ليه Performax1؟</h2>
+                    <p class="section-subtitle">Performax1 شركة تسويق أداء متخصصة — قسم العيادات هو امتداد متخصص من نفس الخبرة، مبني خصيصًا حوالين احتياجات أصحاب العيادات.</p>
+                </div>
+                <div class="en">
+                    <span class="section-tag">Why Performax1</span>
+                    <h2 class="section-title">Why Performax1?</h2>
+                    <p class="section-subtitle">Performax1 is a performance marketing agency — the Clinics division is a specialized extension of the same expertise, built specifically around clinic and medical center needs.</p>
+                </div>
             </div>
             <div class="why-list">
                 <div class="why-item">
                     <div class="why-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    <p>خبرة حقيقية في إدارة ميزانيات إعلانية على Meta وGoogle بنتائج قابلة للقياس.</p>
+                    <p class="ar">خبرة حقيقية في إدارة ميزانيات إعلانية على Meta وGoogle بنتائج قابلة للقياس.</p>
+                    <p class="en">Real experience managing ad budgets on Meta and Google with measurable, trackable results.</p>
                 </div>
                 <div class="why-item">
                     <div class="why-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    <p>فهم عميق لسلوك المريض المصري وإزاي بيقرر يحجز — مش بنستخدم نفس أسلوب المتاجر الإلكترونية.</p>
+                    <p class="ar">فهم عميق لسلوك المريض المصري وإزاي بيقرر يحجز — مش بنستخدم نفس أسلوب المتاجر الإلكترونية.</p>
+                    <p class="en">Deep understanding of how Egyptian patients decide to book — we don't use the same playbook as e-commerce stores.</p>
                 </div>
                 <div class="why-item">
                     <div class="why-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    <p>نظام تسعير عادل ومناسب لطبيعة عملك — مش نسبة من كل حجز زي المتاجر الإلكترونية.</p>
+                    <p class="ar">نظام تسعير عادل ومناسب لطبيعة عملك — مش نسبة من كل حجز.</p>
+                    <p class="en">Fair pricing that fits your business model — not a percentage cut from every booking.</p>
                 </div>
                 <div class="why-item">
                     <div class="why-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    <p>تواصل مباشر وشفاف — مفيش تقارير معقدة أو مصطلحات تسويقية غامضة.</p>
+                    <p class="ar">تواصل مباشر وشفاف — مفيش تقارير معقدة أو مصطلحات تسويقية غامضة.</p>
+                    <p class="en">Direct, transparent communication — no confusing reports or vague marketing jargon.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="faq-section">
+    <!-- ═══ FAQ ═══ -->
+    <section class="section-alt">
         <div class="container-md">
             <div class="section-header-center">
-                <span class="section-tag">أسئلة شائعة</span>
-                <h2 class="section-title">أسئلة بتتكرر</h2>
+                <div class="ar"><span class="section-tag">أسئلة شائعة</span><h2 class="section-title">أسئلة بتتكرر</h2></div>
+                <div class="en"><span class="section-tag">FAQ</span><h2 class="section-title">Common Questions</h2></div>
             </div>
             <div class="faq-list">
+                <!-- Q1 -->
                 <div class="faq-item">
                     <button class="faq-question" onclick="toggleFaq(this)">
-                        <span>هل الإعلانات هتشتغل فعلاً لعيادتي الصغيرة؟</span>
+                        <span class="ar">هل الإعلانات هتشتغل فعلاً لعيادتي الصغيرة؟</span>
+                        <span class="en">Will ads actually work for my small clinic?</span>
                         <span class="faq-icon">+</span>
                     </button>
-                    <div class="faq-answer">أيوه — الإعلانات بتتظبط حسب حجمك وميزانيتك. أحيانًا العيادات الأصغر بتشوف نتيجة أسرع لأن المنافسة على منطقتها أقل.</div>
+                    <div class="faq-answer">
+                        <span class="ar">أيوه — الإعلانات بتتظبط حسب حجمك وميزانيتك. أحيانًا العيادات الأصغر بتشوف نتيجة أسرع لأن المنافسة على منطقتها أقل.</span>
+                        <span class="en">Yes — ads are calibrated to your size and budget. Smaller clinics often see results faster because local competition in their area is lower.</span>
+                    </div>
                 </div>
+                <!-- Q2 -->
                 <div class="faq-item">
                     <button class="faq-question" onclick="toggleFaq(this)">
-                        <span>هل لازم أوقف التسويق التقليدي (لافتات، توصيات)؟</span>
+                        <span class="ar">هل لازم أوقف التسويق التقليدي (لافتات، توصيات)؟</span>
+                        <span class="en">Do I need to stop traditional marketing (signage, referrals)?</span>
                         <span class="faq-icon">+</span>
                     </button>
-                    <div class="faq-answer">لا، الإعلانات الرقمية بتكمّل مصادر المرضى الحالية، مش بتلغيها. الهدف إننا نضيفلك قناة جديدة ومستقرة للحجوزات.</div>
+                    <div class="faq-answer">
+                        <span class="ar">لا، الإعلانات الرقمية بتكمّل مصادر المرضى الحالية، مش بتلغيها. الهدف إننا نضيفلك قناة جديدة ومستقرة للحجوزات.</span>
+                        <span class="en">No — digital ads complement your existing patient sources, not replace them. The goal is to add a new, consistent booking channel on top of what you already have.</span>
+                    </div>
                 </div>
+                <!-- Q3 -->
                 <div class="faq-item">
                     <button class="faq-question" onclick="toggleFaq(this)">
-                        <span>قد إيه هياخد وقت لحد ما أشوف نتيجة؟</span>
+                        <span class="ar">قد إيه هياخد وقت لحد ما أشوف نتيجة؟</span>
+                        <span class="en">How long before I see results?</span>
                         <span class="faq-icon">+</span>
                     </button>
-                    <div class="faq-answer">غالبًا بنشوف أول استفسارات جدية خلال أول 1–2 أسبوع من إطلاق الحملة، لكن الاستقرار والنتائج الأوضح بتظهر بعد أول شهر إلى شهرين.</div>
+                    <div class="faq-answer">
+                        <span class="ar">غالبًا بنشوف أول استفسارات جدية خلال أول 1–2 أسبوع من إطلاق الحملة، لكن الاستقرار والنتائج الأوضح بتظهر بعد أول شهر إلى شهرين.</span>
+                        <span class="en">We typically see the first serious inquiries within 1–2 weeks of launch, but stable, clear results usually appear after the first one to two months.</span>
+                    </div>
                 </div>
+                <!-- Q4 -->
                 <div class="faq-item">
                     <button class="faq-question" onclick="toggleFaq(this)">
-                        <span>هل انتوا بس بتديروا الإعلانات ولا بتساعدوا في المتابعة كمان؟</span>
+                        <span class="ar">هل انتوا بس بتديروا الإعلانات ولا بتساعدوا في المتابعة كمان؟</span>
+                        <span class="en">Do you only manage ads, or do you help with follow-up too?</span>
                         <span class="faq-icon">+</span>
                     </button>
-                    <div class="faq-answer">بنركز أساسًا على جلب الاستفسارات المؤهلة وبنساعدك تبني سيستم متابعة بسيط، لكن الرد المباشر على المرضى بيفضل مسؤولية فريقك.</div>
+                    <div class="faq-answer">
+                        <span class="ar">بنركز أساسًا على جلب الاستفسارات المؤهلة وبنساعدك تبني سيستم متابعة بسيط، لكن الرد المباشر على المرضى بيفضل مسؤولية فريقك.</span>
+                        <span class="en">We focus primarily on generating qualified inquiries and help you build a simple follow-up system. Direct patient communication remains your team's responsibility.</span>
+                    </div>
                 </div>
+                <!-- Q5 -->
                 <div class="faq-item">
                     <button class="faq-question" onclick="toggleFaq(this)">
-                        <span>هل ده منفصل عن Performax1 الأساسية؟</span>
+                        <span class="ar">هل ده منفصل عن Performax1 الأساسية؟</span>
+                        <span class="en">Is this separate from the main Performax1 agency?</span>
                         <span class="faq-icon">+</span>
                     </button>
-                    <div class="faq-answer">Performax1 for Clinics هو قسم متخصص من نفس الشركة (Performax1)، مبني خصيصًا حوالين احتياجات العيادات والمراكز الطبية — مش شركة تانية منفصلة.</div>
+                    <div class="faq-answer">
+                        <span class="ar">Performax1 for Clinics هو قسم متخصص من نفس الشركة (Performax1)، مبني خصيصًا حوالين احتياجات العيادات والمراكز الطبية — مش شركة تانية منفصلة.</span>
+                        <span class="en">Performax1 for Clinics is a specialized division of the same company (Performax1), built specifically around clinic and medical center needs — not a separate company.</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FINAL CTA -->
+    <!-- ═══ FINAL CTA ═══ -->
     <section class="final-cta">
         <div class="final-cta-content">
-            <span class="section-tag">ابدأ دلوقتي</span>
-            <h2>جاهز تملأ جدول مواعيدك؟</h2>
-            <p>احجز استشارة مجانية دلوقتي، واعرف إزاي نقدر نجيبلك مرضى جدد بشكل مستمر وواضح النتيجة.</p>
-            <a href="https://calendly.com/performax1/30min" target="_blank" rel="noopener" class="btn-primary-clinics" style="display: inline-flex; font-size: 1.1rem; padding: 18px 40px;">
-                احجز استشارة مجانية الآن
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-            <p class="micro-trust">مفيش التزام. مفيش ضغط بيع. بس محادثة صريحة عن أهدافك.</p>
+            <div class="ar">
+                <span class="section-tag">ابدأ دلوقتي</span>
+                <h2>جاهز تملأ جدول مواعيدك؟</h2>
+                <p>احجز استشارة مجانية دلوقتي، واعرف إزاي نقدر نجيبلك مرضى جدد بشكل مستمر وواضح النتيجة.</p>
+                <a href="https://calendly.com/performax1/30min" target="_blank" rel="noopener" class="btn-primary-clinics" style="display:inline-flex;font-size:1.05rem;padding:18px 38px;">
+                    احجز استشارة مجانية الآن
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <p class="micro-trust">مفيش التزام. مفيش ضغط بيع. بس محادثة صريحة عن أهدافك.</p>
+            </div>
+            <div class="en">
+                <span class="section-tag">Get Started</span>
+                <h2>Ready to fill your schedule?</h2>
+                <p>Book a free consultation now and learn how we can bring you a steady, measurable stream of new patients.</p>
+                <a href="https://calendly.com/performax1/30min" target="_blank" rel="noopener" class="btn-primary-clinics" style="display:inline-flex;font-size:1.05rem;padding:18px 38px;">
+                    Book Your Free Consultation
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <p class="micro-trust">No commitment. No sales pressure. Just an honest conversation about your goals.</p>
+            </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- ═══ FOOTER ═══ -->
     <footer>
         <div class="footer-inner">
             <a href="clinics.html" class="footer-brand">
@@ -677,7 +800,8 @@
                 <img src="images/logo-light.png" class="theme-logo light-logo" alt="Performax1">
             </a>
             <p class="footer-copy">&#169; 2026 <a href="index.html">Performax1</a> &mdash; Clinics Division</p>
-            <a href="index.html" class="footer-back">&#8592; الموقع الرئيسي</a>
+            <a href="index.html" class="footer-back ar">&#8592; الموقع الرئيسي</a>
+            <a href="index.html" class="footer-back en">&#8592; Main Website</a>
         </div>
     </footer>
 
@@ -686,11 +810,44 @@
     </button>
 
     <script>
-        // Theme
+        // ─── THEME ───
         const currentTheme = localStorage.getItem('theme') || 'dark';
         if (currentTheme === 'light') document.body.setAttribute('data-theme', 'light');
 
-        // Scroll to top
+        // ─── LANGUAGE SWITCHER ───
+        function setLang(lang) {
+            const body = document.body;
+            const html = document.getElementById('html-root');
+
+            body.classList.remove('lang-ar', 'lang-en');
+            body.classList.add('lang-' + lang);
+
+            html.setAttribute('lang', lang === 'ar' ? 'ar' : 'en');
+            html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+            document.getElementById('btn-ar').classList.toggle('active', lang === 'ar');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+            localStorage.setItem('clinics-lang', lang);
+
+            // Update page title + meta description
+            if (lang === 'en') {
+                document.title = 'Performax1 for Clinics | Performance Marketing for Clinics & Medical Centers';
+                document.querySelector('meta[name="description"]').setAttribute('content', 'Paid advertising specialized for clinics and beauty centers — the result is booked appointments, not just clicks. Free consultation with Performax1.');
+            } else {
+                document.title = 'Performax1 for Clinics | تسويق أداء للعيادات والمراكز الطبية';
+                document.querySelector('meta[name="description"]').setAttribute('content', 'إعلانات ممولة متخصصة للعيادات ومراكز التجميل — نتيجتها مواعيد محجوزة، مش مجرد نقرات. استشارة مجانية مع Performax1.');
+            }
+
+            // Close any open FAQs on language switch
+            document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        }
+
+        // Restore saved language
+        const savedLang = localStorage.getItem('clinics-lang') || 'ar';
+        setLang(savedLang);
+
+        // ─── SCROLL TO TOP ───
         const scrollBtn = document.getElementById('scrollToTopBtn');
         window.addEventListener('scroll', () => {
             scrollBtn.classList.toggle('visible', window.pageYOffset > 300);
@@ -709,7 +866,7 @@
             requestAnimationFrame(step);
         });
 
-        // FAQ accordion
+        // ─── FAQ ACCORDION ───
         function toggleFaq(btn) {
             const item = btn.closest('.faq-item');
             const isOpen = item.classList.contains('open');
@@ -717,9 +874,14 @@
             if (!isOpen) item.classList.add('open');
         }
 
-        // Fade-in on scroll
+        // ─── SCROLL REVEAL ───
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; } });
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.style.opacity = '1';
+                    e.target.style.transform = 'translateY(0)';
+                }
+            });
         }, { threshold: 0.08 });
         document.querySelectorAll('.pain-card, .solution-card, .step-item, .stat-card, .who-item, .why-item, .faq-item').forEach(el => {
             el.style.opacity = '0';
